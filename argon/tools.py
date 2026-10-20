@@ -234,7 +234,8 @@ def build_registry(workspace: Path, sandbox: Optional[Sandbox] = None) -> ToolRe
                 "value": _eval_expr(args["expression"])}
 
     async def run_python(args: dict[str, Any]) -> Any:
-        return sandbox.run_python(args["code"])
+        import asyncio
+        return await asyncio.to_thread(sandbox.run_python, args["code"])
 
     reg.register(ToolSpec(
         "write_file", "Write text to a file in the workspace.",
