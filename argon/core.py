@@ -368,7 +368,9 @@ class Scheduler:
             run_id = await self.journal.start_run(workflow)
             await self._event(run_id, "run_started", {"title": workflow.title})
         else:
-            await self._event(run_id, "run_resumed", {"title": workflow.title})
+            prior = await self.journal.events(run_id)
+            kind = "run_resumed" if prior else "run_started"
+            await self._event(run_id, kind, {"title": workflow.title})
 
         by_id = workflow.by_id()
         states = await self.journal.node_states(run_id)
