@@ -1,0 +1,923 @@
+{
+  "tasks": 100,
+  "model": "stub (offline, deterministic)",
+  "fault_mix": {
+    "transient": 28,
+    "none": 49,
+    "uncertain": 14,
+    "crash": 9
+  },
+  "argon": {
+    "completed": 100,
+    "median_latency_s": 3.468,
+    "mean_latency_s": 3.696,
+    "runs_needing_resume": 23
+  },
+  "baseline": {
+    "completed": 75,
+    "median_latency_s": 0.031,
+    "mean_latency_s": 0.039
+  },
+  "results": [
+    {
+      "task": "transform_00",
+      "fault": "transient",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.556,
+      "baseline_s": 0.031,
+      "resumed": false
+    },
+    {
+      "task": "ledger_00",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.4,
+      "baseline_s": 0.028,
+      "resumed": false
+    },
+    {
+      "task": "fanout_00",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.709,
+      "baseline_s": 0.028,
+      "resumed": false
+    },
+    {
+      "task": "report_00",
+      "fault": "uncertain",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 3.114,
+      "baseline_s": 0.028,
+      "resumed": true
+    },
+    {
+      "task": "chain_00",
+      "fault": "transient",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 2.667,
+      "baseline_s": 0.001,
+      "resumed": false
+    },
+    {
+      "task": "transform_01",
+      "fault": "uncertain",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 4.426,
+      "baseline_s": 0.028,
+      "resumed": true
+    },
+    {
+      "task": "ledger_01",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.415,
+      "baseline_s": 0.03,
+      "resumed": false
+    },
+    {
+      "task": "fanout_01",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.692,
+      "baseline_s": 0.031,
+      "resumed": false
+    },
+    {
+      "task": "report_01",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.427,
+      "baseline_s": 0.029,
+      "resumed": false
+    },
+    {
+      "task": "chain_01",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.49,
+      "baseline_s": 0.053,
+      "resumed": false
+    },
+    {
+      "task": "transform_02",
+      "fault": "transient",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.141,
+      "baseline_s": 0.028,
+      "resumed": false
+    },
+    {
+      "task": "ledger_02",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.457,
+      "baseline_s": 0.027,
+      "resumed": false
+    },
+    {
+      "task": "fanout_02",
+      "fault": "transient",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.932,
+      "baseline_s": 0.032,
+      "resumed": false
+    },
+    {
+      "task": "report_02",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.425,
+      "baseline_s": 0.028,
+      "resumed": false
+    },
+    {
+      "task": "chain_02",
+      "fault": "transient",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.546,
+      "baseline_s": 0.053,
+      "resumed": false
+    },
+    {
+      "task": "transform_03",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.245,
+      "baseline_s": 0.034,
+      "resumed": false
+    },
+    {
+      "task": "ledger_03",
+      "fault": "transient",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.58,
+      "baseline_s": 0.044,
+      "resumed": false
+    },
+    {
+      "task": "fanout_03",
+      "fault": "transient",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 5.356,
+      "baseline_s": 0.0,
+      "resumed": false
+    },
+    {
+      "task": "report_03",
+      "fault": "transient",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 4.198,
+      "baseline_s": 0.033,
+      "resumed": false
+    },
+    {
+      "task": "chain_03",
+      "fault": "transient",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.396,
+      "baseline_s": 0.101,
+      "resumed": false
+    },
+    {
+      "task": "transform_04",
+      "fault": "uncertain",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 4.483,
+      "baseline_s": 0.074,
+      "resumed": true
+    },
+    {
+      "task": "ledger_04",
+      "fault": "transient",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.602,
+      "baseline_s": 0.027,
+      "resumed": false
+    },
+    {
+      "task": "fanout_04",
+      "fault": "uncertain",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 4.959,
+      "baseline_s": 0.031,
+      "resumed": true
+    },
+    {
+      "task": "report_04",
+      "fault": "transient",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 2.535,
+      "baseline_s": 0.028,
+      "resumed": false
+    },
+    {
+      "task": "chain_04",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.312,
+      "baseline_s": 0.064,
+      "resumed": false
+    },
+    {
+      "task": "transform_05",
+      "fault": "transient",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 8.469,
+      "baseline_s": 0.001,
+      "resumed": false
+    },
+    {
+      "task": "ledger_05",
+      "fault": "transient",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 2.681,
+      "baseline_s": 0.002,
+      "resumed": false
+    },
+    {
+      "task": "fanout_05",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.743,
+      "baseline_s": 0.033,
+      "resumed": false
+    },
+    {
+      "task": "report_05",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.436,
+      "baseline_s": 0.029,
+      "resumed": false
+    },
+    {
+      "task": "chain_05",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.496,
+      "baseline_s": 0.051,
+      "resumed": false
+    },
+    {
+      "task": "transform_06",
+      "fault": "transient",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 6.784,
+      "baseline_s": 0.033,
+      "resumed": false
+    },
+    {
+      "task": "ledger_06",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.511,
+      "baseline_s": 0.028,
+      "resumed": false
+    },
+    {
+      "task": "fanout_06",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.682,
+      "baseline_s": 0.03,
+      "resumed": false
+    },
+    {
+      "task": "report_06",
+      "fault": "transient",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.479,
+      "baseline_s": 0.027,
+      "resumed": false
+    },
+    {
+      "task": "chain_06",
+      "fault": "transient",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.749,
+      "baseline_s": 0.054,
+      "resumed": false
+    },
+    {
+      "task": "transform_07",
+      "fault": "uncertain",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 4.519,
+      "baseline_s": 0.028,
+      "resumed": true
+    },
+    {
+      "task": "ledger_07",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.488,
+      "baseline_s": 0.029,
+      "resumed": false
+    },
+    {
+      "task": "fanout_07",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.852,
+      "baseline_s": 0.046,
+      "resumed": false
+    },
+    {
+      "task": "report_07",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.411,
+      "baseline_s": 0.029,
+      "resumed": false
+    },
+    {
+      "task": "chain_07",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.434,
+      "baseline_s": 0.059,
+      "resumed": false
+    },
+    {
+      "task": "transform_08",
+      "fault": "uncertain",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 4.549,
+      "baseline_s": 0.03,
+      "resumed": true
+    },
+    {
+      "task": "ledger_08",
+      "fault": "crash",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 3.008,
+      "baseline_s": 0.0,
+      "resumed": true
+    },
+    {
+      "task": "fanout_08",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.939,
+      "baseline_s": 0.029,
+      "resumed": false
+    },
+    {
+      "task": "report_08",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.603,
+      "baseline_s": 0.028,
+      "resumed": false
+    },
+    {
+      "task": "chain_08",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.429,
+      "baseline_s": 0.057,
+      "resumed": false
+    },
+    {
+      "task": "transform_09",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.226,
+      "baseline_s": 0.036,
+      "resumed": false
+    },
+    {
+      "task": "ledger_09",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.556,
+      "baseline_s": 0.031,
+      "resumed": false
+    },
+    {
+      "task": "fanout_09",
+      "fault": "transient",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 4.008,
+      "baseline_s": 0.0,
+      "resumed": false
+    },
+    {
+      "task": "report_09",
+      "fault": "transient",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 2.648,
+      "baseline_s": 0.001,
+      "resumed": false
+    },
+    {
+      "task": "chain_09",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.405,
+      "baseline_s": 0.051,
+      "resumed": false
+    },
+    {
+      "task": "transform_10",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.367,
+      "baseline_s": 0.029,
+      "resumed": false
+    },
+    {
+      "task": "ledger_10",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.59,
+      "baseline_s": 0.028,
+      "resumed": false
+    },
+    {
+      "task": "fanout_10",
+      "fault": "transient",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 4.038,
+      "baseline_s": 0.0,
+      "resumed": false
+    },
+    {
+      "task": "report_10",
+      "fault": "transient",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 2.779,
+      "baseline_s": 0.0,
+      "resumed": false
+    },
+    {
+      "task": "chain_10",
+      "fault": "uncertain",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.884,
+      "baseline_s": 0.051,
+      "resumed": true
+    },
+    {
+      "task": "transform_11",
+      "fault": "transient",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 3.225,
+      "baseline_s": 0.0,
+      "resumed": false
+    },
+    {
+      "task": "ledger_11",
+      "fault": "crash",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 2.977,
+      "baseline_s": 0.0,
+      "resumed": true
+    },
+    {
+      "task": "fanout_11",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.846,
+      "baseline_s": 0.031,
+      "resumed": false
+    },
+    {
+      "task": "report_11",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.619,
+      "baseline_s": 0.028,
+      "resumed": false
+    },
+    {
+      "task": "chain_11",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.548,
+      "baseline_s": 0.104,
+      "resumed": false
+    },
+    {
+      "task": "transform_12",
+      "fault": "transient",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.348,
+      "baseline_s": 0.03,
+      "resumed": false
+    },
+    {
+      "task": "ledger_12",
+      "fault": "transient",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.573,
+      "baseline_s": 0.027,
+      "resumed": false
+    },
+    {
+      "task": "fanout_12",
+      "fault": "transient",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 4.053,
+      "baseline_s": 0.0,
+      "resumed": false
+    },
+    {
+      "task": "report_12",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.464,
+      "baseline_s": 0.03,
+      "resumed": false
+    },
+    {
+      "task": "chain_12",
+      "fault": "crash",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 3.277,
+      "baseline_s": 0.0,
+      "resumed": true
+    },
+    {
+      "task": "transform_13",
+      "fault": "uncertain",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 4.569,
+      "baseline_s": 0.044,
+      "resumed": true
+    },
+    {
+      "task": "ledger_13",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.576,
+      "baseline_s": 0.034,
+      "resumed": false
+    },
+    {
+      "task": "fanout_13",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.902,
+      "baseline_s": 0.029,
+      "resumed": false
+    },
+    {
+      "task": "report_13",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.389,
+      "baseline_s": 0.03,
+      "resumed": false
+    },
+    {
+      "task": "chain_13",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.631,
+      "baseline_s": 0.06,
+      "resumed": false
+    },
+    {
+      "task": "transform_14",
+      "fault": "crash",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 3.509,
+      "baseline_s": 0.001,
+      "resumed": true
+    },
+    {
+      "task": "ledger_14",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 2.446,
+      "baseline_s": 0.028,
+      "resumed": false
+    },
+    {
+      "task": "fanout_14",
+      "fault": "uncertain",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 5.811,
+      "baseline_s": 0.03,
+      "resumed": true
+    },
+    {
+      "task": "report_14",
+      "fault": "crash",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 4.163,
+      "baseline_s": 0.029,
+      "resumed": true
+    },
+    {
+      "task": "chain_14",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.56,
+      "baseline_s": 0.055,
+      "resumed": false
+    },
+    {
+      "task": "transform_15",
+      "fault": "transient",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 4.765,
+      "baseline_s": 0.029,
+      "resumed": false
+    },
+    {
+      "task": "ledger_15",
+      "fault": "uncertain",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 5.179,
+      "baseline_s": 0.03,
+      "resumed": true
+    },
+    {
+      "task": "fanout_15",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 5.451,
+      "baseline_s": 0.031,
+      "resumed": false
+    },
+    {
+      "task": "report_15",
+      "fault": "crash",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 4.436,
+      "baseline_s": 0.035,
+      "resumed": true
+    },
+    {
+      "task": "chain_15",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.47,
+      "baseline_s": 0.055,
+      "resumed": false
+    },
+    {
+      "task": "transform_16",
+      "fault": "uncertain",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 6.112,
+      "baseline_s": 0.033,
+      "resumed": true
+    },
+    {
+      "task": "ledger_16",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.458,
+      "baseline_s": 0.031,
+      "resumed": false
+    },
+    {
+      "task": "fanout_16",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 6.543,
+      "baseline_s": 0.036,
+      "resumed": false
+    },
+    {
+      "task": "report_16",
+      "fault": "transient",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 3.814,
+      "baseline_s": 0.029,
+      "resumed": false
+    },
+    {
+      "task": "chain_16",
+      "fault": "transient",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 3.89,
+      "baseline_s": 0.0,
+      "resumed": false
+    },
+    {
+      "task": "transform_17",
+      "fault": "transient",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 4.484,
+      "baseline_s": 0.029,
+      "resumed": false
+    },
+    {
+      "task": "ledger_17",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.517,
+      "baseline_s": 0.028,
+      "resumed": false
+    },
+    {
+      "task": "fanout_17",
+      "fault": "uncertain",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 7.041,
+      "baseline_s": 0.033,
+      "resumed": true
+    },
+    {
+      "task": "report_17",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.466,
+      "baseline_s": 0.044,
+      "resumed": false
+    },
+    {
+      "task": "chain_17",
+      "fault": "uncertain",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 5.493,
+      "baseline_s": 0.057,
+      "resumed": true
+    },
+    {
+      "task": "transform_18",
+      "fault": "crash",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 5.438,
+      "baseline_s": 0.001,
+      "resumed": true
+    },
+    {
+      "task": "ledger_18",
+      "fault": "crash",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 4.326,
+      "baseline_s": 0.0,
+      "resumed": true
+    },
+    {
+      "task": "fanout_18",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 5.358,
+      "baseline_s": 0.029,
+      "resumed": false
+    },
+    {
+      "task": "report_18",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.465,
+      "baseline_s": 0.031,
+      "resumed": false
+    },
+    {
+      "task": "chain_18",
+      "fault": "crash",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 6.94,
+      "baseline_s": 0.001,
+      "resumed": true
+    },
+    {
+      "task": "transform_19",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 4.652,
+      "baseline_s": 0.03,
+      "resumed": false
+    },
+    {
+      "task": "ledger_19",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.415,
+      "baseline_s": 0.128,
+      "resumed": false
+    },
+    {
+      "task": "fanout_19",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 5.418,
+      "baseline_s": 0.032,
+      "resumed": false
+    },
+    {
+      "task": "report_19",
+      "fault": "uncertain",
+      "argon": true,
+      "baseline": false,
+      "argon_s": 4.671,
+      "baseline_s": 0.029,
+      "resumed": true
+    },
+    {
+      "task": "chain_19",
+      "fault": "none",
+      "argon": true,
+      "baseline": true,
+      "argon_s": 3.491,
+      "baseline_s": 0.056,
+      "resumed": false
+    }
+  ]
+}

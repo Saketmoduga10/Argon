@@ -1,0 +1,2118 @@
+{
+  "scenarios": 50,
+  "passed": 50,
+  "by_family": {
+    "crash_after_append": 10,
+    "crash_before_write": 10,
+    "transient_storm": 10,
+    "uncertain_write": 10,
+    "timeout_pure_tool": 10
+  },
+  "results": [
+    {
+      "family": "crash_after_append",
+      "index": 0,
+      "passed": true,
+      "detail": "ledger lines after crash+resume: ['paid 50']",
+      "crashed_mid_run": true,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 2.936,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "run_resumed",
+        "node_started",
+        "action_reconciled",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "crash_after_append",
+      "index": 1,
+      "passed": true,
+      "detail": "ledger lines after crash+resume: ['paid 51']",
+      "crashed_mid_run": true,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 2.959,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "run_resumed",
+        "node_started",
+        "action_reconciled",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "crash_after_append",
+      "index": 2,
+      "passed": true,
+      "detail": "ledger lines after crash+resume: ['paid 52']",
+      "crashed_mid_run": true,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.088,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "run_resumed",
+        "node_started",
+        "action_reconciled",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "crash_after_append",
+      "index": 3,
+      "passed": true,
+      "detail": "ledger lines after crash+resume: ['paid 53']",
+      "crashed_mid_run": true,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.297,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "run_resumed",
+        "node_started",
+        "action_reconciled",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "crash_after_append",
+      "index": 4,
+      "passed": true,
+      "detail": "ledger lines after crash+resume: ['paid 54']",
+      "crashed_mid_run": true,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.155,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "run_resumed",
+        "node_started",
+        "action_reconciled",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "crash_after_append",
+      "index": 5,
+      "passed": true,
+      "detail": "ledger lines after crash+resume: ['paid 55']",
+      "crashed_mid_run": true,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.021,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "run_resumed",
+        "node_started",
+        "action_reconciled",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "crash_after_append",
+      "index": 6,
+      "passed": true,
+      "detail": "ledger lines after crash+resume: ['paid 56']",
+      "crashed_mid_run": true,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 2.994,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "run_resumed",
+        "node_started",
+        "action_reconciled",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "crash_after_append",
+      "index": 7,
+      "passed": true,
+      "detail": "ledger lines after crash+resume: ['paid 57']",
+      "crashed_mid_run": true,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.038,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "run_resumed",
+        "node_started",
+        "action_reconciled",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "crash_after_append",
+      "index": 8,
+      "passed": true,
+      "detail": "ledger lines after crash+resume: ['paid 58']",
+      "crashed_mid_run": true,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 2.941,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "run_resumed",
+        "node_started",
+        "action_reconciled",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "crash_after_append",
+      "index": 9,
+      "passed": true,
+      "detail": "ledger lines after crash+resume: ['paid 59']",
+      "crashed_mid_run": true,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.162,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "run_resumed",
+        "node_started",
+        "action_reconciled",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "crash_before_write",
+      "index": 0,
+      "passed": true,
+      "detail": "receipt written exactly once after resume",
+      "crashed_mid_run": true,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.196,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "run_resumed",
+        "node_started",
+        "action_reconcile_missed",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "crash_before_write",
+      "index": 1,
+      "passed": true,
+      "detail": "receipt written exactly once after resume",
+      "crashed_mid_run": true,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.273,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "run_resumed",
+        "node_started",
+        "action_reconcile_missed",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "crash_before_write",
+      "index": 2,
+      "passed": true,
+      "detail": "receipt written exactly once after resume",
+      "crashed_mid_run": true,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.396,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "run_resumed",
+        "node_started",
+        "action_reconcile_missed",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "crash_before_write",
+      "index": 3,
+      "passed": true,
+      "detail": "receipt written exactly once after resume",
+      "crashed_mid_run": true,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 4.199,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "run_resumed",
+        "node_started",
+        "action_reconcile_missed",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "crash_before_write",
+      "index": 4,
+      "passed": true,
+      "detail": "receipt written exactly once after resume",
+      "crashed_mid_run": true,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.458,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "run_resumed",
+        "node_started",
+        "action_reconcile_missed",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "crash_before_write",
+      "index": 5,
+      "passed": true,
+      "detail": "receipt written exactly once after resume",
+      "crashed_mid_run": true,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.381,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "run_resumed",
+        "node_started",
+        "action_reconcile_missed",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "crash_before_write",
+      "index": 6,
+      "passed": true,
+      "detail": "receipt written exactly once after resume",
+      "crashed_mid_run": true,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.223,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "run_resumed",
+        "node_started",
+        "action_reconcile_missed",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "crash_before_write",
+      "index": 7,
+      "passed": true,
+      "detail": "receipt written exactly once after resume",
+      "crashed_mid_run": true,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.188,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "run_resumed",
+        "node_started",
+        "action_reconcile_missed",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "crash_before_write",
+      "index": 8,
+      "passed": true,
+      "detail": "receipt written exactly once after resume",
+      "crashed_mid_run": true,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.418,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "run_resumed",
+        "node_started",
+        "action_reconcile_missed",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "crash_before_write",
+      "index": 9,
+      "passed": true,
+      "detail": "receipt written exactly once after resume",
+      "crashed_mid_run": true,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.219,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "run_resumed",
+        "node_started",
+        "action_reconcile_missed",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "transient_storm",
+      "index": 0,
+      "passed": true,
+      "detail": "recovered through transient write_file failures",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 2.635,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_retry",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "transient_storm",
+      "index": 1,
+      "passed": true,
+      "detail": "recovered through transient append_line failures",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 2.894,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_retry",
+        "action_retry",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "transient_storm",
+      "index": 2,
+      "passed": true,
+      "detail": "recovered through transient write_file failures",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 2.73,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_retry",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "transient_storm",
+      "index": 3,
+      "passed": true,
+      "detail": "recovered through transient append_line failures",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 2.672,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_retry",
+        "action_retry",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "transient_storm",
+      "index": 4,
+      "passed": true,
+      "detail": "recovered through transient write_file failures",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 2.726,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_retry",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "transient_storm",
+      "index": 5,
+      "passed": true,
+      "detail": "recovered through transient append_line failures",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 2.648,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_retry",
+        "action_retry",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "transient_storm",
+      "index": 6,
+      "passed": true,
+      "detail": "recovered through transient write_file failures",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 2.583,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_retry",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "transient_storm",
+      "index": 7,
+      "passed": true,
+      "detail": "recovered through transient append_line failures",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 2.649,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_retry",
+        "action_retry",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "transient_storm",
+      "index": 8,
+      "passed": true,
+      "detail": "recovered through transient write_file failures",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 2.472,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_retry",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "transient_storm",
+      "index": 9,
+      "passed": true,
+      "detail": "recovered through transient append_line failures",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 5.623,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_retry",
+        "action_retry",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "uncertain_write",
+      "index": 0,
+      "passed": true,
+      "detail": "write reconciled from the journal, executed once",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.936,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_uncertain",
+        "node_uncertain",
+        "run_finished",
+        "run_resumed",
+        "node_started",
+        "action_reconciled",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "uncertain_write",
+      "index": 1,
+      "passed": true,
+      "detail": "write reconciled from the journal, executed once",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.548,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_uncertain",
+        "node_uncertain",
+        "run_finished",
+        "run_resumed",
+        "node_started",
+        "action_reconciled",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "uncertain_write",
+      "index": 2,
+      "passed": true,
+      "detail": "write reconciled from the journal, executed once",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.74,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_uncertain",
+        "node_uncertain",
+        "run_finished",
+        "run_resumed",
+        "node_started",
+        "action_reconciled",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "uncertain_write",
+      "index": 3,
+      "passed": true,
+      "detail": "write reconciled from the journal, executed once",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.647,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_uncertain",
+        "node_uncertain",
+        "run_finished",
+        "run_resumed",
+        "node_started",
+        "action_reconciled",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "uncertain_write",
+      "index": 4,
+      "passed": true,
+      "detail": "write reconciled from the journal, executed once",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.51,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_uncertain",
+        "node_uncertain",
+        "run_finished",
+        "run_resumed",
+        "node_started",
+        "action_reconciled",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "uncertain_write",
+      "index": 5,
+      "passed": true,
+      "detail": "write reconciled from the journal, executed once",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 2.561,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_uncertain",
+        "node_uncertain",
+        "run_finished",
+        "run_resumed",
+        "node_started",
+        "action_reconciled",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "uncertain_write",
+      "index": 6,
+      "passed": true,
+      "detail": "write reconciled from the journal, executed once",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.899,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_uncertain",
+        "node_uncertain",
+        "run_finished",
+        "run_resumed",
+        "node_started",
+        "action_reconciled",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "uncertain_write",
+      "index": 7,
+      "passed": true,
+      "detail": "write reconciled from the journal, executed once",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 4.665,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_uncertain",
+        "node_uncertain",
+        "run_finished",
+        "run_resumed",
+        "node_started",
+        "action_reconciled",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "uncertain_write",
+      "index": 8,
+      "passed": true,
+      "detail": "write reconciled from the journal, executed once",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 2.85,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_uncertain",
+        "node_uncertain",
+        "run_finished",
+        "run_resumed",
+        "node_started",
+        "action_reconciled",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "uncertain_write",
+      "index": 9,
+      "passed": true,
+      "detail": "write reconciled from the journal, executed once",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.298,
+      "states": {
+        "log": "succeeded",
+        "receipt": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "log",
+          "tool": "append_line",
+          "status": "completed"
+        },
+        {
+          "node": "receipt",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_uncertain",
+        "node_uncertain",
+        "run_finished",
+        "run_resumed",
+        "node_started",
+        "action_reconciled",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "timeout_pure_tool",
+      "index": 0,
+      "passed": true,
+      "detail": "timeout went uncertain, pure tool safely re-executed",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.363,
+      "states": {
+        "calc": "succeeded",
+        "out": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "calc",
+          "tool": "compute",
+          "status": "completed"
+        },
+        {
+          "node": "out",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_uncertain",
+        "node_uncertain",
+        "node_skipped",
+        "run_finished",
+        "run_resumed",
+        "node_started",
+        "action_reconcile_missed",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "timeout_pure_tool",
+      "index": 1,
+      "passed": true,
+      "detail": "timeout went uncertain, pure tool safely re-executed",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.799,
+      "states": {
+        "calc": "succeeded",
+        "out": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "calc",
+          "tool": "compute",
+          "status": "completed"
+        },
+        {
+          "node": "out",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_uncertain",
+        "node_uncertain",
+        "node_skipped",
+        "run_finished",
+        "run_resumed",
+        "node_started",
+        "action_reconcile_missed",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "timeout_pure_tool",
+      "index": 2,
+      "passed": true,
+      "detail": "timeout went uncertain, pure tool safely re-executed",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.422,
+      "states": {
+        "calc": "succeeded",
+        "out": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "calc",
+          "tool": "compute",
+          "status": "completed"
+        },
+        {
+          "node": "out",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_uncertain",
+        "node_uncertain",
+        "node_skipped",
+        "run_finished",
+        "run_resumed",
+        "node_started",
+        "action_reconcile_missed",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "timeout_pure_tool",
+      "index": 3,
+      "passed": true,
+      "detail": "timeout went uncertain, pure tool safely re-executed",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.221,
+      "states": {
+        "calc": "succeeded",
+        "out": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "calc",
+          "tool": "compute",
+          "status": "completed"
+        },
+        {
+          "node": "out",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_uncertain",
+        "node_uncertain",
+        "node_skipped",
+        "run_finished",
+        "run_resumed",
+        "node_started",
+        "action_reconcile_missed",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "timeout_pure_tool",
+      "index": 4,
+      "passed": true,
+      "detail": "timeout went uncertain, pure tool safely re-executed",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 7.363,
+      "states": {
+        "calc": "succeeded",
+        "out": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "calc",
+          "tool": "compute",
+          "status": "completed"
+        },
+        {
+          "node": "out",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_uncertain",
+        "node_uncertain",
+        "node_skipped",
+        "run_finished",
+        "run_resumed",
+        "node_started",
+        "action_reconcile_missed",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "timeout_pure_tool",
+      "index": 5,
+      "passed": true,
+      "detail": "timeout went uncertain, pure tool safely re-executed",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.392,
+      "states": {
+        "calc": "succeeded",
+        "out": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "calc",
+          "tool": "compute",
+          "status": "completed"
+        },
+        {
+          "node": "out",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_uncertain",
+        "node_uncertain",
+        "node_skipped",
+        "run_finished",
+        "run_resumed",
+        "node_started",
+        "action_reconcile_missed",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "timeout_pure_tool",
+      "index": 6,
+      "passed": true,
+      "detail": "timeout went uncertain, pure tool safely re-executed",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.175,
+      "states": {
+        "calc": "succeeded",
+        "out": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "calc",
+          "tool": "compute",
+          "status": "completed"
+        },
+        {
+          "node": "out",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_uncertain",
+        "node_uncertain",
+        "node_skipped",
+        "run_finished",
+        "run_resumed",
+        "node_started",
+        "action_reconcile_missed",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "timeout_pure_tool",
+      "index": 7,
+      "passed": true,
+      "detail": "timeout went uncertain, pure tool safely re-executed",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.155,
+      "states": {
+        "calc": "succeeded",
+        "out": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "calc",
+          "tool": "compute",
+          "status": "completed"
+        },
+        {
+          "node": "out",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_uncertain",
+        "node_uncertain",
+        "node_skipped",
+        "run_finished",
+        "run_resumed",
+        "node_started",
+        "action_reconcile_missed",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "timeout_pure_tool",
+      "index": 8,
+      "passed": true,
+      "detail": "timeout went uncertain, pure tool safely re-executed",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.107,
+      "states": {
+        "calc": "succeeded",
+        "out": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "calc",
+          "tool": "compute",
+          "status": "completed"
+        },
+        {
+          "node": "out",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_uncertain",
+        "node_uncertain",
+        "node_skipped",
+        "run_finished",
+        "run_resumed",
+        "node_started",
+        "action_reconcile_missed",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    },
+    {
+      "family": "timeout_pure_tool",
+      "index": 9,
+      "passed": true,
+      "detail": "timeout went uncertain, pure tool safely re-executed",
+      "crashed_mid_run": false,
+      "final_status": "succeeded",
+      "verified": true,
+      "duration_s": 3.104,
+      "states": {
+        "calc": "succeeded",
+        "out": "succeeded"
+      },
+      "actions": [
+        {
+          "node": "calc",
+          "tool": "compute",
+          "status": "completed"
+        },
+        {
+          "node": "out",
+          "tool": "write_file",
+          "status": "completed"
+        }
+      ],
+      "events": [
+        "run_started",
+        "node_started",
+        "action_started",
+        "action_uncertain",
+        "node_uncertain",
+        "node_skipped",
+        "run_finished",
+        "run_resumed",
+        "node_started",
+        "action_reconcile_missed",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "node_started",
+        "action_started",
+        "action_completed",
+        "node_succeeded",
+        "run_finished"
+      ]
+    }
+  ]
+}
