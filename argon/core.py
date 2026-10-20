@@ -480,12 +480,22 @@ class Scheduler:
                     f"action {call.tool} ({call.idempotency_key}) is uncertain "
                     "and no reconciler is configured"
                 )
-            value = await self.reconcile(node, call, existing)
-            await self.journal.complete_action(run_id, skey, value)
-            await self._event(run_id, "action_reconciled", {
-                "node": node.id, "tool": call.tool, "key": call.idempotency_key,
-            })
-            return value
+            try:
+                value = await self.reconcile(node, call, existing)
+            except ToolFailed:
+                # The reconciler proved the side effect never landed, so
+                # executing now is safe. Fall through to real execution.
+                await self._event(run_id, "action_reconcile_missed", {
+                    "node": node.id, "tool": call.tool,
+                    "key": call.idempotency_key,
+                })
+            else:
+                await self.journal.complete_action(run_id, skey, value)
+                await self._event(run_id, "action_reconciled", {
+                    "node": node.id, "tool": call.tool,
+                    "key": call.idempotency_key,
+                })
+                return value
 
         await self._event(run_id, "action_started", {
             "node": node.id, "tool": call.tool, "key": call.idempotency_key,
