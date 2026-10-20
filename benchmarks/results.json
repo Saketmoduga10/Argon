@@ -7,16 +7,43 @@
     "uncertain": 14,
     "crash": 9
   },
+  "by_template": {
+    "transform": {
+      "tasks": 20,
+      "argon": 20,
+      "baseline": 16
+    },
+    "ledger": {
+      "tasks": 20,
+      "argon": 20,
+      "baseline": 15
+    },
+    "fanout": {
+      "tasks": 20,
+      "argon": 20,
+      "baseline": 16
+    },
+    "report": {
+      "tasks": 20,
+      "argon": 20,
+      "baseline": 12
+    },
+    "chain": {
+      "tasks": 20,
+      "argon": 20,
+      "baseline": 16
+    }
+  },
   "argon": {
     "completed": 100,
-    "median_latency_s": 0.139,
-    "mean_latency_s": 0.145,
+    "median_latency_s": 0.127,
+    "mean_latency_s": 0.138,
     "runs_needing_resume": 23
   },
   "baseline": {
     "completed": 75,
-    "median_latency_s": 0.033,
-    "mean_latency_s": 0.041
+    "median_latency_s": 0.032,
+    "mean_latency_s": 0.039
   },
   "results": [
     {
@@ -24,8 +51,8 @@
       "fault": "transient",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.189,
-      "baseline_s": 0.034,
+      "argon_s": 0.183,
+      "baseline_s": 0.138,
       "resumed": false
     },
     {
@@ -33,8 +60,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.132,
-      "baseline_s": 0.032,
+      "argon_s": 0.143,
+      "baseline_s": 0.029,
       "resumed": false
     },
     {
@@ -42,8 +69,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.125,
-      "baseline_s": 0.034,
+      "argon_s": 0.12,
+      "baseline_s": 0.029,
       "resumed": false
     },
     {
@@ -51,8 +78,8 @@
       "fault": "uncertain",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.124,
-      "baseline_s": 0.039,
+      "argon_s": 0.132,
+      "baseline_s": 0.116,
       "resumed": true
     },
     {
@@ -60,7 +87,7 @@
       "fault": "transient",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.159,
+      "argon_s": 0.16,
       "baseline_s": 0.001,
       "resumed": false
     },
@@ -69,7 +96,7 @@
       "fault": "uncertain",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.164,
+      "argon_s": 0.123,
       "baseline_s": 0.034,
       "resumed": true
     },
@@ -78,8 +105,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.221,
-      "baseline_s": 0.034,
+      "argon_s": 0.117,
+      "baseline_s": 0.031,
       "resumed": false
     },
     {
@@ -87,8 +114,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.182,
-      "baseline_s": 0.044,
+      "argon_s": 0.12,
+      "baseline_s": 0.033,
       "resumed": false
     },
     {
@@ -96,8 +123,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.155,
-      "baseline_s": 0.039,
+      "argon_s": 0.121,
+      "baseline_s": 0.033,
       "resumed": false
     },
     {
@@ -105,8 +132,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.156,
-      "baseline_s": 0.053,
+      "argon_s": 0.29,
+      "baseline_s": 0.07,
       "resumed": false
     },
     {
@@ -114,8 +141,8 @@
       "fault": "transient",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.118,
-      "baseline_s": 0.03,
+      "argon_s": 0.126,
+      "baseline_s": 0.031,
       "resumed": false
     },
     {
@@ -123,8 +150,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.116,
-      "baseline_s": 0.033,
+      "argon_s": 0.127,
+      "baseline_s": 0.03,
       "resumed": false
     },
     {
@@ -132,8 +159,8 @@
       "fault": "transient",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.123,
-      "baseline_s": 0.034,
+      "argon_s": 0.124,
+      "baseline_s": 0.031,
       "resumed": false
     },
     {
@@ -141,8 +168,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.12,
-      "baseline_s": 0.029,
+      "argon_s": 0.159,
+      "baseline_s": 0.038,
       "resumed": false
     },
     {
@@ -150,8 +177,8 @@
       "fault": "transient",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.145,
-      "baseline_s": 0.056,
+      "argon_s": 0.147,
+      "baseline_s": 0.057,
       "resumed": false
     },
     {
@@ -159,8 +186,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.129,
-      "baseline_s": 0.028,
+      "argon_s": 0.13,
+      "baseline_s": 0.03,
       "resumed": false
     },
     {
@@ -168,8 +195,8 @@
       "fault": "transient",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.118,
-      "baseline_s": 0.028,
+      "argon_s": 0.127,
+      "baseline_s": 0.032,
       "resumed": false
     },
     {
@@ -177,7 +204,7 @@
       "fault": "transient",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.126,
+      "argon_s": 0.128,
       "baseline_s": 0.0,
       "resumed": false
     },
@@ -186,8 +213,8 @@
       "fault": "transient",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.118,
-      "baseline_s": 0.03,
+      "argon_s": 0.124,
+      "baseline_s": 0.044,
       "resumed": false
     },
     {
@@ -195,8 +222,8 @@
       "fault": "transient",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.147,
-      "baseline_s": 0.055,
+      "argon_s": 0.161,
+      "baseline_s": 0.056,
       "resumed": false
     },
     {
@@ -205,7 +232,7 @@
       "argon": true,
       "baseline": true,
       "argon_s": 0.128,
-      "baseline_s": 0.03,
+      "baseline_s": 0.029,
       "resumed": true
     },
     {
@@ -213,8 +240,8 @@
       "fault": "transient",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.13,
-      "baseline_s": 0.072,
+      "argon_s": 0.122,
+      "baseline_s": 0.028,
       "resumed": false
     },
     {
@@ -222,8 +249,8 @@
       "fault": "uncertain",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.122,
-      "baseline_s": 0.062,
+      "argon_s": 0.126,
+      "baseline_s": 0.055,
       "resumed": true
     },
     {
@@ -231,8 +258,8 @@
       "fault": "transient",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.115,
-      "baseline_s": 0.027,
+      "argon_s": 0.121,
+      "baseline_s": 0.032,
       "resumed": false
     },
     {
@@ -240,8 +267,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.149,
-      "baseline_s": 0.055,
+      "argon_s": 0.145,
+      "baseline_s": 0.058,
       "resumed": false
     },
     {
@@ -249,7 +276,7 @@
       "fault": "transient",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.151,
+      "argon_s": 0.124,
       "baseline_s": 0.002,
       "resumed": false
     },
@@ -258,7 +285,7 @@
       "fault": "transient",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.174,
+      "argon_s": 0.119,
       "baseline_s": 0.001,
       "resumed": false
     },
@@ -267,8 +294,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.122,
-      "baseline_s": 0.029,
+      "argon_s": 0.178,
+      "baseline_s": 0.033,
       "resumed": false
     },
     {
@@ -276,8 +303,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.147,
-      "baseline_s": 0.029,
+      "argon_s": 0.124,
+      "baseline_s": 0.031,
       "resumed": false
     },
     {
@@ -285,8 +312,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.158,
-      "baseline_s": 0.062,
+      "argon_s": 0.15,
+      "baseline_s": 0.055,
       "resumed": false
     },
     {
@@ -294,8 +321,8 @@
       "fault": "transient",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.12,
-      "baseline_s": 0.028,
+      "argon_s": 0.125,
+      "baseline_s": 0.032,
       "resumed": false
     },
     {
@@ -303,8 +330,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.14,
-      "baseline_s": 0.029,
+      "argon_s": 0.13,
+      "baseline_s": 0.032,
       "resumed": false
     },
     {
@@ -312,8 +339,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.144,
-      "baseline_s": 0.032,
+      "argon_s": 0.119,
+      "baseline_s": 0.037,
       "resumed": false
     },
     {
@@ -321,8 +348,8 @@
       "fault": "transient",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.132,
-      "baseline_s": 0.047,
+      "argon_s": 0.141,
+      "baseline_s": 0.028,
       "resumed": false
     },
     {
@@ -330,8 +357,8 @@
       "fault": "transient",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.215,
-      "baseline_s": 0.071,
+      "argon_s": 0.248,
+      "baseline_s": 0.056,
       "resumed": false
     },
     {
@@ -339,8 +366,8 @@
       "fault": "uncertain",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.134,
-      "baseline_s": 0.06,
+      "argon_s": 0.128,
+      "baseline_s": 0.03,
       "resumed": true
     },
     {
@@ -348,8 +375,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.118,
-      "baseline_s": 0.037,
+      "argon_s": 0.125,
+      "baseline_s": 0.03,
       "resumed": false
     },
     {
@@ -357,7 +384,7 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.125,
+      "argon_s": 0.121,
       "baseline_s": 0.03,
       "resumed": false
     },
@@ -366,7 +393,7 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.136,
+      "argon_s": 0.124,
       "baseline_s": 0.028,
       "resumed": false
     },
@@ -375,7 +402,7 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.278,
+      "argon_s": 0.137,
       "baseline_s": 0.054,
       "resumed": false
     },
@@ -384,8 +411,8 @@
       "fault": "uncertain",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.141,
-      "baseline_s": 0.029,
+      "argon_s": 0.142,
+      "baseline_s": 0.033,
       "resumed": true
     },
     {
@@ -393,7 +420,7 @@
       "fault": "crash",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.119,
+      "argon_s": 0.128,
       "baseline_s": 0.0,
       "resumed": true
     },
@@ -402,8 +429,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.132,
-      "baseline_s": 0.031,
+      "argon_s": 0.192,
+      "baseline_s": 0.034,
       "resumed": false
     },
     {
@@ -411,7 +438,7 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.121,
+      "argon_s": 0.114,
       "baseline_s": 0.028,
       "resumed": false
     },
@@ -420,8 +447,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.145,
-      "baseline_s": 0.059,
+      "argon_s": 0.144,
+      "baseline_s": 0.06,
       "resumed": false
     },
     {
@@ -429,8 +456,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.124,
-      "baseline_s": 0.037,
+      "argon_s": 0.114,
+      "baseline_s": 0.029,
       "resumed": false
     },
     {
@@ -438,8 +465,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.119,
-      "baseline_s": 0.031,
+      "argon_s": 0.122,
+      "baseline_s": 0.032,
       "resumed": false
     },
     {
@@ -447,7 +474,7 @@
       "fault": "transient",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.123,
+      "argon_s": 0.117,
       "baseline_s": 0.0,
       "resumed": false
     },
@@ -456,7 +483,7 @@
       "fault": "transient",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.147,
+      "argon_s": 0.117,
       "baseline_s": 0.001,
       "resumed": false
     },
@@ -465,7 +492,7 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.16,
+      "argon_s": 0.144,
       "baseline_s": 0.056,
       "resumed": false
     },
@@ -474,8 +501,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.143,
-      "baseline_s": 0.042,
+      "argon_s": 0.14,
+      "baseline_s": 0.028,
       "resumed": false
     },
     {
@@ -483,8 +510,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.14,
-      "baseline_s": 0.029,
+      "argon_s": 0.114,
+      "baseline_s": 0.027,
       "resumed": false
     },
     {
@@ -492,7 +519,7 @@
       "fault": "transient",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.132,
+      "argon_s": 0.123,
       "baseline_s": 0.0,
       "resumed": false
     },
@@ -501,7 +528,7 @@
       "fault": "transient",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.125,
+      "argon_s": 0.112,
       "baseline_s": 0.0,
       "resumed": false
     },
@@ -510,8 +537,8 @@
       "fault": "uncertain",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.148,
-      "baseline_s": 0.056,
+      "argon_s": 0.17,
+      "baseline_s": 0.067,
       "resumed": true
     },
     {
@@ -519,7 +546,7 @@
       "fault": "transient",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.13,
+      "argon_s": 0.125,
       "baseline_s": 0.0,
       "resumed": false
     },
@@ -528,7 +555,7 @@
       "fault": "crash",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.121,
+      "argon_s": 0.114,
       "baseline_s": 0.0,
       "resumed": true
     },
@@ -537,8 +564,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.139,
-      "baseline_s": 0.03,
+      "argon_s": 0.301,
+      "baseline_s": 0.031,
       "resumed": false
     },
     {
@@ -546,8 +573,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.161,
-      "baseline_s": 0.03,
+      "argon_s": 0.123,
+      "baseline_s": 0.038,
       "resumed": false
     },
     {
@@ -555,8 +582,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.146,
-      "baseline_s": 0.057,
+      "argon_s": 0.159,
+      "baseline_s": 0.053,
       "resumed": false
     },
     {
@@ -565,7 +592,7 @@
       "argon": true,
       "baseline": true,
       "argon_s": 0.121,
-      "baseline_s": 0.031,
+      "baseline_s": 0.029,
       "resumed": false
     },
     {
@@ -573,8 +600,8 @@
       "fault": "transient",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.137,
-      "baseline_s": 0.029,
+      "argon_s": 0.127,
+      "baseline_s": 0.037,
       "resumed": false
     },
     {
@@ -582,7 +609,7 @@
       "fault": "transient",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.128,
+      "argon_s": 0.118,
       "baseline_s": 0.0,
       "resumed": false
     },
@@ -591,8 +618,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.119,
-      "baseline_s": 0.035,
+      "argon_s": 0.116,
+      "baseline_s": 0.031,
       "resumed": false
     },
     {
@@ -600,7 +627,7 @@
       "fault": "crash",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.151,
+      "argon_s": 0.143,
       "baseline_s": 0.0,
       "resumed": true
     },
@@ -609,8 +636,8 @@
       "fault": "uncertain",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.129,
-      "baseline_s": 0.075,
+      "argon_s": 0.128,
+      "baseline_s": 0.028,
       "resumed": true
     },
     {
@@ -618,8 +645,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.194,
-      "baseline_s": 0.028,
+      "argon_s": 0.12,
+      "baseline_s": 0.032,
       "resumed": false
     },
     {
@@ -627,8 +654,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.142,
-      "baseline_s": 0.028,
+      "argon_s": 0.119,
+      "baseline_s": 0.029,
       "resumed": false
     },
     {
@@ -636,8 +663,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.117,
-      "baseline_s": 0.033,
+      "argon_s": 0.126,
+      "baseline_s": 0.036,
       "resumed": false
     },
     {
@@ -645,7 +672,7 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.162,
+      "argon_s": 0.182,
       "baseline_s": 0.06,
       "resumed": false
     },
@@ -654,7 +681,7 @@
       "fault": "crash",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.15,
+      "argon_s": 0.13,
       "baseline_s": 0.001,
       "resumed": true
     },
@@ -663,8 +690,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.211,
-      "baseline_s": 0.059,
+      "argon_s": 0.116,
+      "baseline_s": 0.032,
       "resumed": false
     },
     {
@@ -672,8 +699,8 @@
       "fault": "uncertain",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.209,
-      "baseline_s": 0.034,
+      "argon_s": 0.191,
+      "baseline_s": 0.032,
       "resumed": true
     },
     {
@@ -681,8 +708,8 @@
       "fault": "crash",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.139,
-      "baseline_s": 0.085,
+      "argon_s": 0.135,
+      "baseline_s": 0.029,
       "resumed": true
     },
     {
@@ -690,8 +717,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.17,
-      "baseline_s": 0.07,
+      "argon_s": 0.147,
+      "baseline_s": 0.055,
       "resumed": false
     },
     {
@@ -699,8 +726,8 @@
       "fault": "transient",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.125,
-      "baseline_s": 0.052,
+      "argon_s": 0.149,
+      "baseline_s": 0.057,
       "resumed": false
     },
     {
@@ -708,7 +735,7 @@
       "fault": "uncertain",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.152,
+      "argon_s": 0.138,
       "baseline_s": 0.032,
       "resumed": true
     },
@@ -717,8 +744,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.15,
-      "baseline_s": 0.032,
+      "argon_s": 0.121,
+      "baseline_s": 0.028,
       "resumed": false
     },
     {
@@ -726,8 +753,8 @@
       "fault": "crash",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.141,
-      "baseline_s": 0.085,
+      "argon_s": 0.123,
+      "baseline_s": 0.028,
       "resumed": true
     },
     {
@@ -735,8 +762,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.178,
-      "baseline_s": 0.109,
+      "argon_s": 0.145,
+      "baseline_s": 0.052,
       "resumed": false
     },
     {
@@ -744,8 +771,8 @@
       "fault": "uncertain",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.127,
-      "baseline_s": 0.033,
+      "argon_s": 0.13,
+      "baseline_s": 0.029,
       "resumed": true
     },
     {
@@ -753,8 +780,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.131,
-      "baseline_s": 0.034,
+      "argon_s": 0.187,
+      "baseline_s": 0.028,
       "resumed": false
     },
     {
@@ -762,8 +789,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.122,
-      "baseline_s": 0.03,
+      "argon_s": 0.121,
+      "baseline_s": 0.033,
       "resumed": false
     },
     {
@@ -771,8 +798,8 @@
       "fault": "transient",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.12,
-      "baseline_s": 0.029,
+      "argon_s": 0.114,
+      "baseline_s": 0.026,
       "resumed": false
     },
     {
@@ -780,7 +807,7 @@
       "fault": "transient",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.174,
+      "argon_s": 0.153,
       "baseline_s": 0.0,
       "resumed": false
     },
@@ -790,7 +817,7 @@
       "argon": true,
       "baseline": true,
       "argon_s": 0.118,
-      "baseline_s": 0.032,
+      "baseline_s": 0.028,
       "resumed": false
     },
     {
@@ -798,8 +825,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.121,
-      "baseline_s": 0.027,
+      "argon_s": 0.169,
+      "baseline_s": 0.029,
       "resumed": false
     },
     {
@@ -807,8 +834,8 @@
       "fault": "uncertain",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.12,
-      "baseline_s": 0.029,
+      "argon_s": 0.128,
+      "baseline_s": 0.04,
       "resumed": true
     },
     {
@@ -816,7 +843,7 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.231,
+      "argon_s": 0.127,
       "baseline_s": 0.028,
       "resumed": false
     },
@@ -825,8 +852,8 @@
       "fault": "uncertain",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.148,
-      "baseline_s": 0.056,
+      "argon_s": 0.149,
+      "baseline_s": 0.062,
       "resumed": true
     },
     {
@@ -834,7 +861,7 @@
       "fault": "crash",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.124,
+      "argon_s": 0.126,
       "baseline_s": 0.0,
       "resumed": true
     },
@@ -843,7 +870,7 @@
       "fault": "crash",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.176,
+      "argon_s": 0.115,
       "baseline_s": 0.0,
       "resumed": true
     },
@@ -852,8 +879,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.115,
-      "baseline_s": 0.029,
+      "argon_s": 0.13,
+      "baseline_s": 0.031,
       "resumed": false
     },
     {
@@ -861,8 +888,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.159,
-      "baseline_s": 0.027,
+      "argon_s": 0.115,
+      "baseline_s": 0.028,
       "resumed": false
     },
     {
@@ -870,7 +897,7 @@
       "fault": "crash",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.199,
+      "argon_s": 0.17,
       "baseline_s": 0.001,
       "resumed": true
     },
@@ -879,8 +906,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.132,
-      "baseline_s": 0.031,
+      "argon_s": 0.116,
+      "baseline_s": 0.027,
       "resumed": false
     },
     {
@@ -888,8 +915,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.164,
-      "baseline_s": 0.028,
+      "argon_s": 0.121,
+      "baseline_s": 0.041,
       "resumed": false
     },
     {
@@ -897,7 +924,7 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.167,
+      "argon_s": 0.117,
       "baseline_s": 0.028,
       "resumed": false
     },
@@ -906,8 +933,8 @@
       "fault": "uncertain",
       "argon": true,
       "baseline": false,
-      "argon_s": 0.17,
-      "baseline_s": 0.03,
+      "argon_s": 0.119,
+      "baseline_s": 0.029,
       "resumed": true
     },
     {
@@ -915,8 +942,8 @@
       "fault": "none",
       "argon": true,
       "baseline": true,
-      "argon_s": 0.176,
-      "baseline_s": 0.061,
+      "argon_s": 0.143,
+      "baseline_s": 0.056,
       "resumed": false
     }
   ]
