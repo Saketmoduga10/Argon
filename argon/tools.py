@@ -322,6 +322,13 @@ def make_reconciler(registry: ToolRegistry):
 
     async def reconcile(node: Node, call: ToolCall, record: dict[str, Any]) -> Any:
         spec = registry.spec(call.tool)
+        if not spec.side_effect:
+            # A pure tool (compute, reads, checks) leaves nothing behind,
+            # so re-executing it cannot duplicate anything. Reporting it
+            # as "not landed" routes the scheduler to safe re-execution.
+            raise ToolFailed(
+                f"tool {call.tool} has no side effects; safe to re-execute"
+            )
         if spec.verify is None:
             raise ToolUncertain(
                 f"tool {call.tool} has no verify hook; cannot reconcile"
