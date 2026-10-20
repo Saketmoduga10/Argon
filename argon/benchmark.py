@@ -333,10 +333,21 @@ async def run_benchmark(root: Path) -> dict[str, Any]:
               f"argon={'OK ' if a_ok else 'FAIL'} "
               f"baseline={'OK ' if b_ok else 'FAIL'}", flush=True)
 
+    by_template: dict[str, dict[str, int]] = {}
+    for r in results:
+        tpl = r["task"].rsplit("_", 1)[0]
+        agg = by_template.setdefault(
+            tpl, {"tasks": 0, "argon": 0, "baseline": 0}
+        )
+        agg["tasks"] += 1
+        agg["argon"] += int(r["argon"])
+        agg["baseline"] += int(r["baseline"])
+
     summary = {
         "tasks": len(tasks),
         "model": "stub (offline, deterministic)",
         "fault_mix": kinds,
+        "by_template": by_template,
         "argon": {
             "completed": argon_done,
             "median_latency_s": round(statistics.median(argon_times), 3),
