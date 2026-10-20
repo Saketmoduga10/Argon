@@ -232,3 +232,24 @@ def test_reconcile_proving_no_side_effect_allows_execution(journal):
     out = run(main())
     assert out["status"] == "succeeded"
     assert state["executions"] == 2  # one uncertain attempt + one real run
+
+
+def test_failed_head_of_chain_skips_whole_chain_without_deadlock(journal):
+    async def execute(node, call):
+        raise ToolUncertain("head died")
+
+    async def main():
+        sched = Scheduler(journal, execute)
+        return await sched.run(wf([
+            Node(id="s1", title="S1", role="executor", calls=[ToolCall("w")]),
+            Node(id="s2", title="S2", role="executor", calls=[ToolCall("w")],
+                 depends_on=["s1"]),
+            Node(id="s3", title="S3", role="executor", calls=[ToolCall("w")],
+                 depends_on=["s2"]),
+        ]))
+
+    out = run(main())
+    assert out["status"] == "failed"
+    assert out["states"]["s1"]["status"] == "uncertain"
+    assert out["states"]["s2"]["status"] == "skipped"
+    assert out["states"]["s3"]["status"] == "skipped"
