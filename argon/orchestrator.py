@@ -156,6 +156,9 @@ class Runner:
                 return_exceptions=True,
             )
             states = await self.journal.node_states(run_id)
+            # Record the crash on the run itself; a resume's finish
+            # overwrites this when the run completes.
+            await self.journal.finish_run(run_id, "crashed")
             return {
                 "run_id": run_id, "status": "crashed",
                 "duration_s": time.perf_counter() - started,
