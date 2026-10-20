@@ -6,6 +6,8 @@ Argon is a multi-agent orchestration framework in Python. It splits a task acros
 
 **Live dashboard:** run the server (below) and open http://localhost:8000 to watch the dependency graph, the tool action journal, and the verifier work in real time, and to inject failures yourself.
 
+![The Argon dashboard after a recovered run: graph green, journal complete, verifier evidence attached](docs/assets/dashboard.png)
+
 ## Why it exists
 
 A single agent doing everything in one loop is a process with no memory. If it crashes after sending a payment but before recording that it sent the payment, a restart has two bad options: do the step again and pay twice, or skip it and lose the work. Argon gives the runtime a durable journal so that question has an evidence based answer instead of a guess.
