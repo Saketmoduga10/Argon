@@ -51,6 +51,8 @@ class StubModel:
                 "role": "executor",
                 "calls": [{"tool": step["tool"], "args": step.get("args", {})}],
                 "depends_on": step.get("depends_on", []),
+                "timeout_s": step.get("timeout_s", 30.0),
+                "max_retries": step.get("max_retries", 2),
             })
         return {"nodes": nodes}
 
