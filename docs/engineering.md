@@ -26,11 +26,12 @@ An action's content key is a hash of its tool and arguments. Two different nodes
 
 - One worker process is the authority for a run. Node states live in the journal; the in memory loop only tracks what is currently executing.
 - On resume, nodes left `running` by a dead process become `uncertain`, and nodes `skipped` in a previous life are revived: a skip was a judgement about a failure that this new life may repair. Only dependencies that settle badly *in the current run* settle a dependent's fate.
+- Plans are persisted with the run in the journal (with a schema migration for journals created before the column existed). A resume executes the stored plan rather than re-deriving one, so a nondeterministic live model cannot change the workflow in the middle of a recovery.
 - The scheduler loop once declared deadlock too eagerly: a pass that skipped a node can change whether a dependent evaluated earlier in the same pass is stuck, so the loop must make a full no progress pass before concluding deadlock. Found by the benchmark after journal writes got faster (below) changed the interleaving, which is a good reminder that timing dependent tests passing proves little.
 
 ## Journal performance and the WAL tradeoff
 
-The first benchmark run was dominated by the journal: Argon's median task time was 3.468s against the baseline's 0.031s, because every action and event was its own transaction and every transaction paid a full fsync. Switching the journal to WAL mode with `synchronous=NORMAL` cut the median to 0.139s. The tradeoff is standard SQLite: a *process* crash loses nothing (all failure lab scenarios still pass), while an OS or power failure can drop the last few committed transactions. For an orchestration journal that can reconcile uncertain actions anyway, that is the right trade, and it is declared in the code rather than hidden.
+The first benchmark run was dominated by the journal: Argon's median task time was 3.468s against the baseline's 0.031s, because every action and event was its own transaction and every transaction paid a full fsync. Switching the journal to WAL mode with `synchronous=NORMAL` cut the median to about 0.13s. The tradeoff is standard SQLite: a *process* crash loses nothing (all failure lab scenarios still pass), while an OS or power failure can drop the last few committed transactions. For an orchestration journal that can reconcile uncertain actions anyway, that is the right trade, and it is declared in the code rather than hidden.
 
 ## Benchmark methodology
 
@@ -54,6 +55,5 @@ This is stricter than "the run eventually reported success", and it is why the l
 ## Known limitations and next steps
 
 - Single authority scheduler; multi writer journals need a consensus or locking story the current format does not attempt.
-- Plans are re-derived on resume rather than persisted. Persisting the plan with the run is the obvious fix and removes a real (if stub masked) inconsistency for live models.
 - The sandbox's subprocess mode limits CPU and memory but shares the host network namespace model of a plain subprocess: it cannot promise network isolation. Docker mode can, and is preferred automatically when Docker exists.
 - The verifier's criteria are structural (files, values). Semantic criteria (does this summary actually answer the question) need a model based judge, which reintroduces the trust problem the verifier exists to avoid. A hybrid, structural first and judged second with the judgement labelled as such, is the direction I would take.

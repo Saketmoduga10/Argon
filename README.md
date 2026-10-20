@@ -20,10 +20,10 @@ Everything below was produced by the benchmark and failure lab in this repo. Rep
 
 | | Completed | Median task time |
 |---|---|---|
-| Argon | **100 / 100** | 0.139s |
-| Single agent baseline | 75 / 100 | 0.033s |
+| Argon | **100 / 100** | 0.127s |
+| Single agent baseline | 75 / 100 | 0.032s |
 
-The baseline lost every crash task (its work lived in memory), most tasks where a tool failed twice in a row (it retries once), and the uncertain tasks where the side effect was an append it could not tell had already landed, so it appended twice and failed the check. Argon is slower per task: every action and event is a journal transaction, and that durability is the cost. On tasks this small there is no model latency to hide it. The trade is explicit: a few centiseconds of journaling for runs that finish and can prove what they did.
+The baseline lost every crash task (its work lived in memory), most tasks where a tool failed twice in a row (it retries once), and the uncertain tasks where the side effect was an append it could not tell had already landed, so it appended twice and failed the check. Its worst template was report generation (12 of 20) and its best were the single append ledgers (15 of 20): the more steps and appends a task has, the more ways an in memory loop finds to lose or duplicate work. Argon completed 20 of 20 on all five templates. Argon is slower per task: every action and event is a journal transaction, and that durability is the cost. On tasks this small there is no model latency to hide it. The trade is explicit: a few centiseconds of journaling for runs that finish and can prove what they did.
 
 **Failure lab: 50 injected failure scenarios, 50 recovered correctly.** Ten each of: crash after a side effect lands, crash before it, transient failure storms, uncertain write outcomes, and timeouts on pure tools. Every scenario checks hard postconditions on the real workspace and journal (exact file contents, exact line counts, actions executed once), not just a success flag.
 
@@ -47,7 +47,7 @@ The baseline lost every crash task (its work lived in memory), most tasks where 
 
 ```sh
 pip install -r requirements.txt
-python -m pytest            # 40 tests: scheduler, journal, gateway,
+python -m pytest            # 50 tests: scheduler, journal, gateway,
                             # agents, orchestrator, API
 ```
 
@@ -90,4 +90,4 @@ export ARGON_API_KEY=...
 - One scheduler worker is the authority for a run (the same simplifying choice Ledger makes); the journal format does not yet support multiple writers.
 - Offline numbers measure orchestration with a stub model. Model quality comparisons need a real model plugged in, and will vary by model.
 - `run_python` jobs run in a worker thread so the event loop stays responsive; long jobs are bounded by the sandbox timeout.
-- On resume, the plan is re-derived from the task. With the stub planner this is deterministic. With a live model, plans are not yet persisted across restarts.
+- Plans are stored in the journal with the run, and a resume executes the stored plan exactly as it was planned. Only runs recorded by older versions fall back to re-deriving a plan from the task.
