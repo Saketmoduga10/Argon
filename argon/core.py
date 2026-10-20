@@ -166,6 +166,13 @@ class Journal:
         self.path = str(path)
         self.db = sqlite3.connect(self.path, check_same_thread=False)
         self.db.row_factory = sqlite3.Row
+        # WAL with NORMAL sync: commits stop paying a full fsync each,
+        # which dominates end to end latency when every action and event
+        # is its own transaction. A process crash (what the failure lab
+        # injects) loses nothing; only an OS or power failure can drop
+        # the last few transactions, the standard SQLite tradeoff.
+        self.db.execute("PRAGMA journal_mode=WAL")
+        self.db.execute("PRAGMA synchronous=NORMAL")
         self.db.executescript(SCHEMA)
         self.db.commit()
         self._lock = asyncio.Lock()
