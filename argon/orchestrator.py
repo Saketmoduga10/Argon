@@ -121,10 +121,20 @@ class Runner:
         its own workspace (default: a per run directory) so runs never
         collide in the same files; a resume must pass the same workspace
         as the original run."""
-        registry = build_registry(workspace or self.workspace)
         workflow = await Planner(self.model).plan(task)
         if run_id is None:
             run_id = await self.journal.start_run(workflow)
+        return await self._execute(workflow, task, faults, run_id, workspace)
+
+    async def _execute(
+        self,
+        workflow: Any,
+        task: dict[str, Any],
+        faults: Optional[dict[str, Any]],
+        run_id: str,
+        workspace: Optional[Path],
+    ) -> dict[str, Any]:
+        registry = build_registry(workspace or self.workspace)
         scheduler, injector = self._scheduler(registry, faults)
         if injector is not None:
             injector.on_crash = lambda: current.cancel()  # noqa: F821
@@ -171,11 +181,19 @@ class Runner:
         self, task: dict[str, Any], run_id: str,
         workspace: Optional[Path] = None,
     ) -> dict[str, Any]:
-        """Resume a crashed or interrupted run from its journal. No faults
-        are injected on a resume: this is the recovery being inspected."""
-        return await self.run_task(
-            task, faults=None, run_id=run_id, workspace=workspace
-        )
+        """Resume a crashed or interrupted run from its journal. The
+        stored plan is executed as planned; re-deriving a plan from the
+        task only happens for legacy runs that predate stored plans.
+        No faults are injected on a resume: this is the recovery being
+        inspected."""
+        workflow = await self.journal.get_plan(run_id)
+        if workflow is None:
+            return await self.run_task(
+                task, faults=None, run_id=run_id, workspace=workspace
+            )
+        report = await self._execute(workflow, task, None, run_id, workspace)
+        await self.journal.emit(run_id, "run_resumed", {"run_id": run_id})
+        return report
 
     async def inspect_run(self, run_id: str) -> dict[str, Any]:
         """Everything the failure lab shows: node states, the full action
