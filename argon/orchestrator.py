@@ -113,11 +113,15 @@ class Runner:
         task: dict[str, Any],
         faults: Optional[dict[str, Any]] = None,
         run_id: Optional[str] = None,
+        workspace: Optional[Path] = None,
     ) -> dict[str, Any]:
         """Plan, execute, verify. With a crash fault this returns as soon
         as the 'process' dies, with status 'crashed'; call resume_task
-        with the same run_id to continue from the journal."""
-        registry = build_registry(self.workspace)
+        with the same run_id to continue from the journal. Each run gets
+        its own workspace (default: a per run directory) so runs never
+        collide in the same files; a resume must pass the same workspace
+        as the original run."""
+        registry = build_registry(workspace or self.workspace)
         workflow = await Planner(self.model).plan(task)
         if run_id is None:
             run_id = await self.journal.start_run(workflow)
@@ -164,11 +168,14 @@ class Runner:
         }
 
     async def resume_task(
-        self, task: dict[str, Any], run_id: str
+        self, task: dict[str, Any], run_id: str,
+        workspace: Optional[Path] = None,
     ) -> dict[str, Any]:
         """Resume a crashed or interrupted run from its journal. No faults
         are injected on a resume: this is the recovery being inspected."""
-        return await self.run_task(task, faults=None, run_id=run_id)
+        return await self.run_task(
+            task, faults=None, run_id=run_id, workspace=workspace
+        )
 
     async def inspect_run(self, run_id: str) -> dict[str, Any]:
         """Everything the failure lab shows: node states, the full action
