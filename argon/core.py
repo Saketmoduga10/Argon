@@ -197,6 +197,14 @@ class Journal:
             self.db.commit()
         return run_id
 
+    async def list_runs(self, limit: int = 50) -> list[dict[str, Any]]:
+        async with self._lock:
+            rows = self.db.execute(
+                "SELECT * FROM runs ORDER BY created_at DESC LIMIT ?",
+                (limit,),
+            ).fetchall()
+        return [dict(r) for r in rows]
+
     async def finish_run(self, run_id: str, status: str) -> None:
         async with self._lock:
             self.db.execute(
