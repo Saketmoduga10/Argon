@@ -206,3 +206,29 @@ def test_cycle_is_rejected(journal):
 
     with pytest.raises(ValueError, match="cycle"):
         run(main())
+
+
+def test_reconcile_proving_no_side_effect_allows_execution(journal):
+    state = {"executions": 0}
+
+    async def execute(node, call):
+        state["executions"] += 1
+        if state["executions"] == 1:
+            raise ToolUncertain("died before doing anything")
+        return "done"
+
+    async def reconcile(node, call, record):
+        raise ToolFailed("checked: the side effect is not there")
+
+    async def main():
+        sched = Scheduler(journal, execute, reconcile=reconcile)
+        workflow = wf([
+            Node(id="a", title="A", role="executor", calls=[ToolCall("charge")]),
+        ])
+        first = await sched.run(workflow)
+        assert first["states"]["a"]["status"] == "uncertain"
+        return await sched.run(workflow, run_id=first["run_id"])
+
+    out = run(main())
+    assert out["status"] == "succeeded"
+    assert state["executions"] == 2  # one uncertain attempt + one real run
