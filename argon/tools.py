@@ -183,6 +183,25 @@ def build_registry(workspace: Path, sandbox: Optional[Sandbox] = None) -> ToolRe
                     "bytes": len(args["content"]), "reconciled": True}
         return None
 
+
+    async def append_line(args: dict[str, Any]) -> Any:
+        path = _safe_path(root, args["path"])
+        path.parent.mkdir(parents=True, exist_ok=True)
+        existing = path.read_text() if path.exists() else ""
+        path.write_text(existing + args["line"] + "\n")
+        return {"path": args["path"], "lines": existing.count("\n") + 1
+                if existing else 1}
+
+    async def verify_append(args: dict[str, Any]) -> Optional[Any]:
+        # Landed means the line is present. Appends are the classic
+        # non idempotent side effect: replaying one blindly duplicates it,
+        # which the journal exists to prevent.
+        path = _safe_path(root, args["path"])
+        if path.exists() and (args["line"] + "\n") in path.read_text():
+            return {"path": args["path"], "reconciled": True,
+                    "line": args["line"]}
+        return None
+
     async def read_file(args: dict[str, Any]) -> Any:
         path = _safe_path(root, args["path"])
         if not path.exists():
@@ -220,6 +239,10 @@ def build_registry(workspace: Path, sandbox: Optional[Sandbox] = None) -> ToolRe
     reg.register(ToolSpec(
         "write_file", "Write text to a file in the workspace.",
         {"executor"}, write_file, side_effect=True, verify=verify_write,
+    ))
+    reg.register(ToolSpec(
+        "append_line", "Append one line to a file (non idempotent).",
+        {"executor"}, append_line, side_effect=True, verify=verify_append,
     ))
     reg.register(ToolSpec(
         "read_file", "Read a file from the workspace.",
