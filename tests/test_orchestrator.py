@@ -115,3 +115,12 @@ def test_timeout_leaves_node_uncertain_and_identifiable(tmp_path):
     kinds = [e["kind"] for e in inspection["events"]]
     assert "action_uncertain" in kinds
     runner.close()
+
+
+def test_timed_out_pure_tool_reexecutes_on_resume(tmp_path):
+    runner = make_runner(tmp_path)
+    out = run_task(runner, TIMEOUT_TASK, faults={"delay": {"compute": 2.0}})
+    assert out["states"]["slow"]["status"] == "uncertain"
+    resumed = asyncio.run(runner.resume_task(TIMEOUT_TASK, out["run_id"]))
+    assert resumed["status"] == "succeeded" and resumed["verified"]
+    runner.close()
