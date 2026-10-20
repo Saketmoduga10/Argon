@@ -16,6 +16,9 @@ dependencies = [
     "httpx>=0.27,<1",
 ]
 
+[project.scripts]
+argon = "argon.__main__:main"
+
 [project.optional-dependencies]
 dev = ["pytest>=8,<10"]
 
