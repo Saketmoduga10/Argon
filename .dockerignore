@@ -1,0 +1,9 @@
+.git
+.venv
+runs
+dashboard/node_modules
+dashboard/dist
+__pycache__
+*.db
+*.db-wal
+*.db-shm
