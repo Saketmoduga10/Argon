@@ -383,6 +383,11 @@ class Scheduler:
         for nid in list(pending):
             if states[nid]["status"] == NodeStatus.RUNNING.value:
                 await self.journal.set_node_state(run_id, nid, NodeStatus.UNCERTAIN)
+            # A node SKIPPED in a previous life was cut off because a
+            # dependency failed then. This life may repair the dependency,
+            # so the node is revived and judged on this run's outcome.
+            if states[nid]["status"] == NodeStatus.SKIPPED.value:
+                await self.journal.set_node_state(run_id, nid, NodeStatus.PENDING)
 
         running: dict[str, asyncio.Task] = {}
         while pending or running:
@@ -400,8 +405,13 @@ class Scheduler:
                         NodeStatus.FAILED.value, NodeStatus.UNCERTAIN.value,
                         NodeStatus.SKIPPED.value,
                     )
+                    and d not in pending and d not in running
                     for d in deps
                 ):
+                    # A dependency settled badly in THIS run, so this node
+                    # can never run. A dependency still pending or running
+                    # (for example, being reconciled on a resume) does not
+                    # settle anything yet.
                     pending.discard(nid)
                     await self.journal.set_node_state(run_id, nid, NodeStatus.SKIPPED)
                     await self._event(run_id, "node_skipped", {"node": nid})
