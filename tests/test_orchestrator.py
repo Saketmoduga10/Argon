@@ -124,3 +124,48 @@ def test_timed_out_pure_tool_reexecutes_on_resume(tmp_path):
     resumed = asyncio.run(runner.resume_task(TIMEOUT_TASK, out["run_id"]))
     assert resumed["status"] == "succeeded" and resumed["verified"]
     runner.close()
+
+
+def test_journal_stores_the_plan_with_the_run(tmp_path):
+    async def main():
+        runner = Runner(tmp_path / "j.db", tmp_path / "ws")
+        report = await runner.run_task(TASK)
+        plan = await runner.journal.get_plan(report["run_id"])
+        runner.close()
+        return plan
+
+    plan = asyncio.run(main())
+    assert plan is not None
+    assert [n.id for n in plan.nodes] == ["log", "receipt"]
+    assert plan.nodes[0].calls[0].tool == "append_line"
+
+
+def test_resume_executes_the_stored_plan_not_a_rederived_one(tmp_path):
+    async def main():
+        runner = Runner(tmp_path / "j.db", tmp_path / "ws")
+        report = await runner.run_task(
+            TASK,
+            faults={"crash_on": {"append_line": 1, "after_side_effect": True}},
+        )
+        assert report["status"] == "crashed"
+        # Same run, but the caller now hands resume a DIFFERENT task body.
+        # If resume re-planned, the ledger would gain a "paid 999" line.
+        mutated = {
+            **TASK,
+            "steps": [
+                {"id": "log", "tool": "append_line",
+                 "args": {"path": "ledger.txt", "line": "paid 999"}},
+                {"id": "receipt", "tool": "write_file",
+                 "args": {"path": "receipt.txt", "content": "paid 999"},
+                 "depends_on": ["log"]},
+            ],
+        }
+        resumed = await runner.resume_task(mutated, report["run_id"])
+        runner.close()
+        return resumed
+
+    report = asyncio.run(main())
+    assert report["status"] == "succeeded"
+    # Verification ran against the ORIGINAL acceptance criteria (paid 50),
+    # and it passed: the stored plan, not the mutated one, was executed.
+    assert report["verified"] is True
