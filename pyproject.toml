@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "argon"
+version = "1.0.0"
+description = "A multi-agent orchestration framework that treats agents like a distributed system: durable DAG scheduling, role-scoped tool permissions, failure recovery, and evidence-based verification."
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Saket Moduga"}]
+dependencies = [
+    "fastapi>=0.115,<1",
+    "uvicorn[standard]>=0.30,<1",
+    "httpx>=0.27,<1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+
+[tool.setuptools]
+packages = ["argon"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
