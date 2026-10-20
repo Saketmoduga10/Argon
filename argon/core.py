@@ -164,6 +164,7 @@ class Journal:
 
     def __init__(self, path: str | Path):
         self.path = str(path)
+        Path(self.path).parent.mkdir(parents=True, exist_ok=True)
         self.db = sqlite3.connect(self.path, check_same_thread=False)
         self.db.row_factory = sqlite3.Row
         # WAL with NORMAL sync: commits stop paying a full fsync each,
@@ -398,6 +399,7 @@ class Scheduler:
 
         running: dict[str, asyncio.Task] = {}
         while pending or running:
+            progress = False
             for nid in list(pending):
                 node = by_id[nid]
                 deps = node.depends_on
@@ -407,6 +409,7 @@ class Scheduler:
                     running[nid] = asyncio.create_task(
                         self._run_node(run_id, node, results)
                     )
+                    progress = True
                 elif any(
                     dep_states[d]["status"] in (
                         NodeStatus.FAILED.value, NodeStatus.UNCERTAIN.value,
@@ -422,10 +425,17 @@ class Scheduler:
                     pending.discard(nid)
                     await self.journal.set_node_state(run_id, nid, NodeStatus.SKIPPED)
                     await self._event(run_id, "node_skipped", {"node": nid})
+                    progress = True
             if not running:
-                if pending:
+                if not pending:
+                    break
+                if not progress:
+                    # A full pass started and settled nothing while nodes
+                    # remain: they can genuinely never run. (A pass that
+                    # skipped a node must loop again, because that skip can
+                    # settle a dependent evaluated earlier in the pass.)
                     raise RuntimeError("deadlock: pending nodes can never run")
-                break
+                continue
             done, _ = await asyncio.wait(
                 running.values(), return_when=asyncio.FIRST_COMPLETED
             )
