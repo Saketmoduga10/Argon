@@ -18,6 +18,7 @@ or execute), and the tool result is kept as evidence.
 
 from __future__ import annotations
 
+import asyncio
 import json
 import os
 from dataclasses import dataclass
@@ -87,17 +88,34 @@ class OpenAICompatModel:
         import httpx
 
         prompt = PLAN_PROMPT.replace("{task}", json.dumps(task))
-        async with httpx.AsyncClient(timeout=120) as client:
-            resp = await client.post(
-                f"{self.base_url.rstrip('/')}/chat/completions",
-                headers={"Authorization": f"Bearer {self.api_key}"},
-                json={
-                    "model": self.model,
-                    "messages": [{"role": "user", "content": prompt}],
-                    "response_format": {"type": "json_object"},
-                },
-            )
-            resp.raise_for_status()
+        # Model APIs shed load with 429s and 503s, especially on free
+        # tiers. A planner that cannot survive a transient error makes
+        # the whole framework look flaky, so retry those with backoff.
+        # Client errors (a bad key, a bad model name) fail at once.
+        for attempt in range(3):
+            try:
+                async with httpx.AsyncClient(timeout=120) as client:
+                    resp = await client.post(
+                        f"{self.base_url.rstrip('/')}/chat/completions",
+                        headers={"Authorization": f"Bearer {self.api_key}"},
+                        json={
+                            "model": self.model,
+                            "messages": [{"role": "user", "content": prompt}],
+                            "response_format": {"type": "json_object"},
+                        },
+                    )
+                resp.raise_for_status()
+                break
+            except httpx.HTTPStatusError as exc:
+                retryable = exc.response.status_code in (
+                    429, 500, 502, 503, 504)
+                if not retryable or attempt == 2:
+                    raise
+                await asyncio.sleep(2 ** attempt)
+            except httpx.TransportError:
+                if attempt == 2:
+                    raise
+                await asyncio.sleep(2 ** attempt)
         content = resp.json()["choices"][0]["message"]["content"]
         return json.loads(content)
 
