@@ -17,7 +17,7 @@
       "crashed_mid_run": true,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 2.936,
+      "duration_s": 0.012,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -57,7 +57,7 @@
       "crashed_mid_run": true,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 2.959,
+      "duration_s": 0.048,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -97,7 +97,7 @@
       "crashed_mid_run": true,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.088,
+      "duration_s": 0.012,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -137,7 +137,7 @@
       "crashed_mid_run": true,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.297,
+      "duration_s": 0.007,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -177,7 +177,7 @@
       "crashed_mid_run": true,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.155,
+      "duration_s": 0.007,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -217,7 +217,7 @@
       "crashed_mid_run": true,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.021,
+      "duration_s": 0.007,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -257,7 +257,7 @@
       "crashed_mid_run": true,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 2.994,
+      "duration_s": 0.008,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -297,7 +297,7 @@
       "crashed_mid_run": true,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.038,
+      "duration_s": 0.008,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -337,7 +337,7 @@
       "crashed_mid_run": true,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 2.941,
+      "duration_s": 0.008,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -377,7 +377,7 @@
       "crashed_mid_run": true,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.162,
+      "duration_s": 0.007,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -417,7 +417,7 @@
       "crashed_mid_run": true,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.196,
+      "duration_s": 0.008,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -459,7 +459,7 @@
       "crashed_mid_run": true,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.273,
+      "duration_s": 0.007,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -501,7 +501,7 @@
       "crashed_mid_run": true,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.396,
+      "duration_s": 0.009,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -543,7 +543,7 @@
       "crashed_mid_run": true,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 4.199,
+      "duration_s": 0.007,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -585,7 +585,7 @@
       "crashed_mid_run": true,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.458,
+      "duration_s": 0.007,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -627,7 +627,7 @@
       "crashed_mid_run": true,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.381,
+      "duration_s": 0.007,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -669,7 +669,7 @@
       "crashed_mid_run": true,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.223,
+      "duration_s": 0.015,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -711,7 +711,7 @@
       "crashed_mid_run": true,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.188,
+      "duration_s": 0.035,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -753,7 +753,7 @@
       "crashed_mid_run": true,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.418,
+      "duration_s": 0.007,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -795,7 +795,7 @@
       "crashed_mid_run": true,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.219,
+      "duration_s": 0.014,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -837,7 +837,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 2.635,
+      "duration_s": 0.006,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -876,7 +876,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 2.894,
+      "duration_s": 0.006,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -916,7 +916,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 2.73,
+      "duration_s": 0.006,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -955,7 +955,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 2.672,
+      "duration_s": 0.012,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -995,7 +995,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 2.726,
+      "duration_s": 0.009,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -1034,7 +1034,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 2.648,
+      "duration_s": 0.006,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -1074,7 +1074,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 2.583,
+      "duration_s": 0.005,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -1113,7 +1113,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 2.649,
+      "duration_s": 0.008,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -1153,7 +1153,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 2.472,
+      "duration_s": 0.01,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -1192,7 +1192,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 5.623,
+      "duration_s": 0.006,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -1232,7 +1232,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.936,
+      "duration_s": 0.012,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -1275,7 +1275,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.548,
+      "duration_s": 0.008,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -1318,7 +1318,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.74,
+      "duration_s": 0.044,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -1361,7 +1361,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.647,
+      "duration_s": 0.016,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -1404,7 +1404,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.51,
+      "duration_s": 0.008,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -1447,7 +1447,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 2.561,
+      "duration_s": 0.008,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -1490,7 +1490,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.899,
+      "duration_s": 0.015,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -1533,7 +1533,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 4.665,
+      "duration_s": 0.01,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -1576,7 +1576,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 2.85,
+      "duration_s": 0.008,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -1619,7 +1619,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.298,
+      "duration_s": 0.01,
       "states": {
         "log": "succeeded",
         "receipt": "succeeded"
@@ -1662,7 +1662,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.363,
+      "duration_s": 0.216,
       "states": {
         "calc": "succeeded",
         "out": "succeeded"
@@ -1708,7 +1708,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.799,
+      "duration_s": 0.208,
       "states": {
         "calc": "succeeded",
         "out": "succeeded"
@@ -1754,7 +1754,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.422,
+      "duration_s": 0.21,
       "states": {
         "calc": "succeeded",
         "out": "succeeded"
@@ -1800,7 +1800,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.221,
+      "duration_s": 0.217,
       "states": {
         "calc": "succeeded",
         "out": "succeeded"
@@ -1846,7 +1846,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 7.363,
+      "duration_s": 0.212,
       "states": {
         "calc": "succeeded",
         "out": "succeeded"
@@ -1892,7 +1892,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.392,
+      "duration_s": 0.211,
       "states": {
         "calc": "succeeded",
         "out": "succeeded"
@@ -1938,7 +1938,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.175,
+      "duration_s": 0.216,
       "states": {
         "calc": "succeeded",
         "out": "succeeded"
@@ -1984,7 +1984,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.155,
+      "duration_s": 0.211,
       "states": {
         "calc": "succeeded",
         "out": "succeeded"
@@ -2030,7 +2030,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.107,
+      "duration_s": 0.218,
       "states": {
         "calc": "succeeded",
         "out": "succeeded"
@@ -2076,7 +2076,7 @@
       "crashed_mid_run": false,
       "final_status": "succeeded",
       "verified": true,
-      "duration_s": 3.104,
+      "duration_s": 0.208,
       "states": {
         "calc": "succeeded",
         "out": "succeeded"
