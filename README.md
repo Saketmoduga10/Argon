@@ -47,7 +47,7 @@ The baseline lost every crash task (its work lived in memory), most tasks where 
 
 ```sh
 pip install -r requirements.txt
-python -m pytest            # 50 tests: scheduler, journal, gateway,
+python -m pytest            # 52 tests: scheduler, journal, gateway,
                             # agents, orchestrator, API
 ```
 
@@ -72,6 +72,8 @@ export ARGON_MODEL_BASE_URL=http://localhost:11434/v1   # or any provider
 export ARGON_MODEL=your-model
 export ARGON_API_KEY=...
 ```
+
+This path is tested end to end with Google's Gemini (gemini-3.8-flash) through its OpenAI compatible endpoint on the free tier: Gemini planned the payment workflow, the run verified, a crashed run resumed from its stored plan, and the payment ledger held exactly one entry afterwards. The model client retries transient API errors (429 and 5xx) with backoff, because free tier endpoints shed load often enough that a planner without retries looks broken.
 
 ## Layout
 
