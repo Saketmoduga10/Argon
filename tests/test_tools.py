@@ -105,3 +105,19 @@ def test_verify_hook_detects_landed_and_missing_writes(registry):
         assert landed is not None and landed["reconciled"]
 
     run(main())
+
+
+def test_append_line_and_its_verify_hook(registry):
+    async def main():
+        spec = registry.spec("append_line")
+        assert await spec.verify({"path": "log.txt", "line": "paid"}) is None
+        out = await registry.call(
+            "executor", "append_line", {"path": "log.txt", "line": "paid"}
+        )
+        assert out["lines"] == 1
+        landed = await spec.verify({"path": "log.txt", "line": "paid"})
+        assert landed is not None and landed["reconciled"]
+        read = await registry.call("verifier", "read_file", {"path": "log.txt"})
+        assert read["content"] == "paid\n"
+
+    run(main())
