@@ -101,6 +101,7 @@ function App() {
   const [benchmarks, setBenchmarks] = useState(null);
   const [lab, setLab] = useState(null);
   const [labBusy, setLabBusy] = useState('');
+  const [pastRuns, setPastRuns] = useState([]);
   const [connected, setConnected] = useState(false);
   const labIndex = useRef(0);
   const runIdRef = useRef(null);
@@ -112,6 +113,7 @@ function App() {
       if (list.length) selectTask(list[0]);
     });
     fetch('/api/benchmarks').then(r => r.json()).then(setBenchmarks);
+    loadPastRuns();
     const proto = location.protocol === 'https:' ? 'wss' : 'ws';
     const ws = new WebSocket(`${proto}://${location.host}/ws`);
     ws.onopen = () => setConnected(true);
@@ -136,6 +138,7 @@ function App() {
         }, ...prev].slice(0, 40));
       }
       if (kind === 'report_ready' && payload.run_id) {
+        loadPastRuns();
         fetch(`/api/runs/${payload.run_id}`).then(r => r.json()).then(data => {
           const st = {};
           Object.entries(data.states || {}).forEach(([k, v]) => {
@@ -149,6 +152,28 @@ function App() {
     };
     return () => ws.close();
   }, []);
+
+  function loadPastRuns() {
+    fetch('/api/runs').then(r => r.json()).then(setPastRuns).catch(() => {});
+  }
+
+  async function openPastRun(id) {
+    const data = await (await fetch(`/api/runs/${id}`)).json();
+    if (data.task) {
+      setTask(data.task);
+      setFaultTool(data.task.steps[0]?.tool || '');
+    }
+    setRunId(id);
+    const st = {};
+    Object.entries(data.states || {}).forEach(([k, v]) => { st[k] = v.status; });
+    setStates(st);
+    setActions(data.actions || []);
+    setReport(data.report || null);
+    setTimeline((data.events || []).slice().reverse().map(e => ({
+      kind: e.kind, node: e.payload?.node || '',
+      tool: e.payload?.tool || '', at: '',
+    })));
+  }
 
   function selectTask(t) {
     setTask(t);
@@ -314,6 +339,19 @@ function App() {
             </span>
           )}
         </header>
+
+        {pastRuns.length > 0 && (
+          <div className="recent">
+            <History size={13} /> Recent runs
+            {pastRuns.slice(0, 8).map(r => (
+              <button key={r.run_id} className="runchip"
+                onClick={() => openPastRun(r.run_id)}>
+                <i style={{background: STATUS_COLORS[r.status] || '#94a3b8'}} />
+                {r.title?.slice(0, 34) || r.run_id} · {r.status}
+              </button>
+            ))}
+          </div>
+        )}
 
         <section className="panel">
           <div className="panelhead"><GitBranch size={15} /> DEPENDENCY GRAPH
