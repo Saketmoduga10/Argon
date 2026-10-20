@@ -38,9 +38,9 @@ class ModelClient(Protocol):
 # --------------------------------------------------------------------------
 
 class StubModel:
-    """Plans directly from the task's structured step list. Steps at the
-    same dependency depth become sibling nodes so the scheduler can run
-    them in parallel; the verifier node is added by the Planner."""
+    """Plans directly from the task's structured step list. Steps keep
+    their declared dependencies, so independent steps become sibling
+    nodes the scheduler can run in parallel."""
 
     async def plan(self, task: dict[str, Any]) -> dict[str, Any]:
         nodes = []
@@ -128,6 +128,8 @@ class Planner:
                 calls=[ToolCall(c["tool"], c.get("args", {}))
                        for c in n.get("calls", [])],
                 depends_on=n.get("depends_on", []),
+                timeout_s=n.get("timeout_s", 30.0),
+                max_retries=n.get("max_retries", 2),
                 acceptance=[],
             ))
         workflow = Workflow(id=task["id"], title=task["title"], nodes=nodes)
