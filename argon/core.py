@@ -81,6 +81,43 @@ class Workflow:
     title: str
     nodes: list[Node]
 
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "id": self.id,
+            "title": self.title,
+            "nodes": [
+                {
+                    "id": n.id, "title": n.title, "role": n.role,
+                    "calls": [{"tool": c.tool, "args": c.args}
+                              for c in n.calls],
+                    "depends_on": n.depends_on,
+                    "timeout_s": n.timeout_s,
+                    "max_retries": n.max_retries,
+                    "acceptance": n.acceptance,
+                }
+                for n in self.nodes
+            ],
+        }
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "Workflow":
+        return cls(
+            id=data["id"],
+            title=data["title"],
+            nodes=[
+                Node(
+                    id=n["id"], title=n["title"], role=n["role"],
+                    calls=[ToolCall(tool=c["tool"], args=c.get("args", {}))
+                           for c in n.get("calls", [])],
+                    depends_on=n.get("depends_on", []),
+                    timeout_s=n.get("timeout_s", 30.0),
+                    max_retries=n.get("max_retries", 2),
+                    acceptance=n.get("acceptance", []),
+                )
+                for n in data["nodes"]
+            ],
+        )
+
     def validate(self) -> None:
         ids = [n.id for n in self.nodes]
         if len(ids) != len(set(ids)):
@@ -122,7 +159,8 @@ CREATE TABLE IF NOT EXISTS runs (
     title TEXT NOT NULL,
     status TEXT NOT NULL,
     created_at REAL NOT NULL,
-    finished_at REAL
+    finished_at REAL,
+    plan TEXT
 );
 CREATE TABLE IF NOT EXISTS node_states (
     run_id TEXT NOT NULL,
@@ -175,6 +213,11 @@ class Journal:
         self.db.execute("PRAGMA journal_mode=WAL")
         self.db.execute("PRAGMA synchronous=NORMAL")
         self.db.executescript(SCHEMA)
+        # Migration for journals created before plans were persisted:
+        # the stored plan is what a resume executes.
+        cols = [r[1] for r in self.db.execute("PRAGMA table_info(runs)")]
+        if "plan" not in cols:
+            self.db.execute("ALTER TABLE runs ADD COLUMN plan TEXT")
         self.db.commit()
         self._lock = asyncio.Lock()
 
@@ -186,8 +229,9 @@ class Journal:
         run_id = uuid.uuid4().hex[:12]
         async with self._lock:
             self.db.execute(
-                "INSERT INTO runs VALUES (?,?,?,?,?,?)",
-                (run_id, workflow.id, workflow.title, "running", time.time(), None),
+                "INSERT INTO runs VALUES (?,?,?,?,?,?,?)",
+                (run_id, workflow.id, workflow.title, "running",
+                 time.time(), None, json.dumps(workflow.to_dict())),
             )
             for n in workflow.nodes:
                 self.db.execute(
@@ -196,6 +240,16 @@ class Journal:
                 )
             self.db.commit()
         return run_id
+
+    async def get_plan(self, run_id: str) -> Optional[Workflow]:
+        """The plan stored with the run, or None for legacy runs."""
+        async with self._lock:
+            row = self.db.execute(
+                "SELECT plan FROM runs WHERE run_id=?", (run_id,)
+            ).fetchone()
+        if row is None or row["plan"] is None:
+            return None
+        return Workflow.from_dict(json.loads(row["plan"]))
 
     async def list_runs(self, limit: int = 50) -> list[dict[str, Any]]:
         async with self._lock:
