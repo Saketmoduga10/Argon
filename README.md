@@ -6,6 +6,8 @@ Argon is a multi-agent orchestration framework in Python. It splits a task acros
 
 **Live dashboard:** run the server (below) and open http://localhost:8000 to watch the dependency graph, the tool action journal, and the verifier work in real time, and to inject failures yourself.
 
+**Live demo:** [saketmoduga10.github.io/Argon](https://saketmoduga10.github.io/Argon/) — replay a real recorded run in your browser, including the crash, the journal based recovery, and the verifier evidence. No setup needed.
+
 ![The Argon dashboard after a recovered run: graph green, journal complete, verifier evidence attached](docs/assets/dashboard.png)
 
 ## Why it exists
