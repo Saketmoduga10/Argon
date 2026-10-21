@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Argon · Multi Agent Orchestration That Survives Crashes</title>
+<style>
+  :root{
+    --bg:#0b1220; --panel:#101b30; --panel2:#0d1728; --line:#22334f;
+    --ink:#e8eefb; --dim:#9db1d1; --blue:#5b93f5; --green:#3ecf6f;
+    --amber:#f5b84c; --red:#f2606e; --violet:#a78bfa;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:ui-sans-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55}
+  .wrap{max-width:1060px;margin:0 auto;padding:28px 20px 64px}
+  header.hero{text-align:left;padding:30px 0 8px}
+  h1{font-size:52px;margin:0 0 6px;letter-spacing:.5px}
+  .sub{font-size:21px;color:var(--ink);margin:0 0 10px}
+  .lede{color:var(--dim);max-width:760px;margin:0 0 18px;font-size:16.5px}
+  .btns{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+  .btn{display:inline-block;padding:10px 18px;border-radius:10px;border:1px solid var(--line);
+    background:var(--panel);color:var(--ink);text-decoration:none;font-weight:600}
+  .btn.primary{background:var(--blue);border-color:var(--blue);color:#081426}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0 4px}
+  .chip{background:var(--panel);border:1px solid var(--line);border-radius:999px;
+    padding:7px 14px;font-size:14px;color:var(--ink)}
+  .chip b{color:#fff}
+  section{margin-top:38px}
+  h2{font-size:27px;margin:0 0 8px}
+  p.intro{color:var(--dim);max-width:820px;margin:0 0 16px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
+  .controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+  .ctl{padding:9px 18px;border-radius:10px;border:1px solid var(--line);
+    background:var(--panel2);color:var(--ink);font-weight:600;cursor:pointer;font-size:15px}
+  .ctl.go{background:var(--blue);border-color:var(--blue);color:#081426}
+  .pill{margin-left:auto;font-size:13.5px;padding:6px 13px;border-radius:999px;
+    border:1px solid var(--line);color:var(--dim)}
+  .pill.run{color:var(--blue);border-color:var(--blue)}
+  .pill.crash{color:var(--red);border-color:var(--red)}
+  .pill.ok{color:var(--green);border-color:var(--green)}
+  #graph{width:100%;height:auto;display:block}
+  .narr{background:var(--panel2);border:1px solid var(--line);border-left:4px solid var(--blue);
+    border-radius:10px;padding:12px 16px;min-height:56px;font-size:16px;margin-top:12px}
+  .narr.crash{border-left-color:var(--red)}
+  .narr.good{border-left-color:var(--green)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+  @media (max-width:840px){.grid{grid-template-columns:1fr}}
+  .card h3{margin:0 0 10px;font-size:17px}
+  ol.timeline{margin:0;padding-left:20px;color:var(--dim);font-size:14.5px;max-height:300px;overflow:auto}
+  ol.timeline li{margin-bottom:7px}
+  ol.timeline li.hot{color:var(--ink)}
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
+  th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line)}
+  th{color:var(--dim);font-weight:600}
+  .st{font-size:12.5px;padding:2.5px 9px;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
+  .st.started{color:var(--amber);border-color:var(--amber)}
+  .st.completed{color:var(--green);border-color:var(--green)}
+  .st.reconciled{color:var(--violet);border-color:var(--violet)}
+  tr.stuck td{background:rgba(242,96,110,.08)}
+  #verdict{display:none;margin-top:16px}
+  .check{display:flex;gap:10px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--line)}
+  .check:last-child{border-bottom:none}
+  .pass{color:var(--green);font-weight:700;white-space:nowrap}
+  .check .ev{color:var(--dim);font-size:14px;margin-left:auto;text-align:right}
+  .ledgerbox{background:#08101d;border:1px solid var(--line);border-radius:10px;
+    padding:12px 16px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:15px;margin-top:12px}
+  .ledgerbox .fname{color:var(--dim);font-size:12.5px;margin-bottom:5px}
+  ul.plain{margin:0;padding-left:20px;color:var(--dim)}
+  ul.plain li{margin-bottom:10px}
+  ul.plain b{color:var(--ink)}
+  .bar{margin:12px 0}
+  .bar .lab{display:flex;justify-content:space-between;font-size:15px;margin-bottom:5px}
+  .track{background:var(--panel2);border:1px solid var(--line);border-radius:8px;height:26px;overflow:hidden}
+  .fill{height:100%;background:var(--blue)}
+  .fill.base{background:#5a6f92}
+  code{background:#08101d;border:1px solid var(--line);border-radius:6px;padding:1px 7px;
+    font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px}
+  footer{margin-top:46px;color:var(--dim);font-size:14px;border-top:1px solid var(--line);padding-top:18px}
+  .stack{display:flex;gap:9px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>Argon</h1>
+  <p class="sub">A multi agent orchestration framework built to survive its own crashes.</p>
+  <p class="lede">Argon plans a job as a graph of steps, runs independent steps in parallel,
+  and writes every tool action to a durable journal before it runs. If the process dies halfway,
+  Argon resumes from the journal, works out which actions already landed, and finishes the job
+  without repeating side effects.</p>
+  <div class="btns">
+    <a class="btn primary" href="https://github.com/Saketmoduga10/Argon">View the code on GitHub</a>
+    <a class="btn" href="https://www.linkedin.com/in/saket-moduga-87a944259/">Saket on LinkedIn</a>
+  </div>
+  <div class="chips">
+    <span class="chip"><b>100 of 100</b> benchmark tasks completed</span>
+    <span class="chip"><b>50 of 50</b> failure scenarios recovered</span>
+    <span class="chip"><b>52</b> tests passing</span>
+    <span class="chip"><b>54</b> commits</span>
+  </div>
+</header>
+
+<section>
+  <h2>Watch a run crash and recover</h2>
+  <p class="intro">This is a replay of a real run recorded on October 20, 2026, with the timing
+  stretched so you can follow it. A fault was injected on purpose: the process dies right after
+  the payment append lands. Everything shown comes from the run itself, its action journal,
+  and the verifier output at the end.</p>
+  <div class="card">
+    <div class="controls">
+      <button class="ctl go" id="playBtn">Play the run</button>
+      <button class="ctl" id="restartBtn">Restart</button>
+      <span class="pill" id="runPill">Run state: ready</span>
+    </div>
+    <svg id="graph" viewBox="0 0 920 300" role="img" aria-label="Step graph for the recorded run"></svg>
+    <div class="narr" id="narr">Press play. Six steps, one injected crash, and a payment that must land exactly once.</div>
+    <div class="grid">
+      <div class="card" style="background:var(--panel2)">
+        <h3>What happened</h3>
+        <ol class="timeline" id="timeline"></ol>
+      </div>
+      <div class="card" style="background:var(--panel2)">
+        <h3>The action journal</h3>
+        <table>
+          <thead><tr><th>Step</th><th>Tool</th><th>Target</th><th>Status</th></tr></thead>
+          <tbody id="journalBody">
+            <tr><td colspan="4" style="color:var(--dim)">Nothing yet. The journal fills in as actions run.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card" id="verdict" style="background:var(--panel2)">
+      <h3>Verifier evidence</h3>
+      <div id="checks"></div>
+      <div class="ledgerbox">
+        <div class="fname">ledger.txt after the run</div>
+        <div id="ledgerLines"></div>
+      </div>
+      <p style="color:var(--dim);margin:10px 0 0">One line. The customer was charged once, even though the process died mid payment.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Why the payment was not charged twice</h2>
+  <div class="card">
+    <ul class="plain">
+      <li><b>Every action is journaled first.</b> Argon records the action, and a key built from its tool and arguments, before the tool runs.</li>
+      <li><b>Uncertain is a real state.</b> When a run dies mid action, the journal is left holding that action as started. Argon reads that as unknown, never as failed and never as done.</li>
+      <li><b>Recovery checks the evidence.</b> On resume, Argon asks whether the side effect already landed. If it did, the action is reconciled and skipped. If it provably did not, the action runs again.</li>
+      <li><b>A verifier grades the result.</b> Acceptance rules are checked against the actual files at the end, with evidence, before a run counts as succeeded.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>The benchmark</h2>
+  <p class="intro">One hundred tasks across five shapes of work. Argon and a sequential single agent
+  baseline were given the same tasks, the same tools, and the same injected faults:
+  49 clean tasks, 28 with transient failures, 14 with uncertain outcomes, and 9 with full crashes.</p>
+  <div class="card">
+    <div class="bar">
+      <div class="lab"><span>Argon</span><span><b>100 of 100</b> tasks</span></div>
+      <div class="track"><div class="fill" style="width:100%"></div></div>
+    </div>
+    <div class="bar">
+      <div class="lab"><span>Single agent baseline</span><span><b>75 of 100</b> tasks</span></div>
+      <div class="track"><div class="fill base" style="width:75%"></div></div>
+    </div>
+    <table style="margin-top:14px">
+      <thead><tr><th>Shape of work</th><th>Argon</th><th>Baseline</th></tr></thead>
+      <tbody><tr><td>Transform</td><td>20 of 20</td><td>16 of 20</td></tr><tr><td>Ledger</td><td>20 of 20</td><td>15 of 20</td></tr><tr><td>Fanout</td><td>20 of 20</td><td>16 of 20</td></tr><tr><td>Report</td><td>20 of 20</td><td>12 of 20</td></tr><tr><td>Chain</td><td>20 of 20</td><td>16 of 20</td></tr></tbody>
+    </table>
+    <p style="color:var(--dim);margin:14px 0 0">Measured with an offline stub model, so this tests the orchestration
+    rather than the intelligence of any model. On this harness Argon is also slower per task, a median of
+    0.127 seconds against 0.032 for the baseline, because writing every action to a durable journal costs
+    more than parallelism saves at this scale. The method and the raw results live in the repo, next to the code.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The failure lab</h2>
+  <p class="intro">Fifty scenarios that try to break recovery, ten each of five kinds. Every scenario checks
+  hard postconditions afterward, like exact file contents and a single completed entry in the journal
+  for the payment action.</p>
+  <div class="card">
+    <table>
+      <thead><tr><th>Scenario</th><th>Recovered</th></tr></thead>
+      <tbody><tr><td>Crash after the append lands</td><td>10 of 10</td></tr><tr><td>Crash before the write lands</td><td>10 of 10</td></tr><tr><td>Transient failure storm</td><td>10 of 10</td></tr><tr><td>Uncertain write outcome</td><td>10 of 10</td></tr><tr><td>Timeout on a pure tool</td><td>10 of 10</td></tr></tbody>
+    </table>
+    <p style="color:var(--dim);margin:14px 0 0">Total: <b style="color:var(--ink)">50 of 50</b> scenarios recovered correctly.</p>
+  </div>
+</section>
+
+<section>
+  <h2>A live model run</h2>
+  <div class="card">
+    <p style="margin-top:0">Argon also ran with a real model in the loop. Google Gemini, through its OpenAI
+    compatible endpoint on the free tier, planned the payment workflow end to end. The clean run verified.
+    A second run was crashed after the payment append, resumed from its stored plan, and verified again,
+    and the ledger held exactly one entry afterward.</p>
+    <div class="chips" style="margin:6px 0 2px">
+      <span class="chip">Model: <code>gemini-3.8-flash</code></span>
+      <span class="chip">Clean run: <b>verified</b></span>
+      <span class="chip">Crash and resume run: <b>verified</b></span>
+      <span class="chip">Ledger entries afterward: <b>exactly 1</b></span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Built with</h2>
+  <div class="stack">
+    <span class="chip">Python</span>
+    <span class="chip">asyncio</span>
+    <span class="chip">FastAPI</span>
+    <span class="chip">React</span>
+    <span class="chip">SQLite</span>
+    <span class="chip">Docker</span>
+    <span class="chip">MCP style tool gateway</span>
+    <span class="chip">Role scoped permissions</span>
+    <span class="chip">Sandboxed code execution</span>
+  </div>
+</section>
+
+<section>
+  <h2>See it in full</h2>
+  <p class="intro">The repo holds the source, the tests, the benchmark harness, and the raw results
+  behind every number on this page.</p>
+  <div class="btns">
+    <a class="btn primary" href="https://github.com/Saketmoduga10/Argon">GitHub</a>
+    <a class="btn" href="https://www.linkedin.com/in/saket-moduga-87a944259/">LinkedIn</a>
+  </div>
+</section>
+
+<footer>
+  Demo page for the Argon project by Saket Moduga. The replay above uses data recorded from a real run of the shipped code.
+</footer>
+
+</div>
+
+<script>
+const DATA = {"nodes": [{"id": "intake", "label": "Intake", "desc": "Write the order file", "tool": "write_file", "file": "order.txt", "deps": []}, {"id": "charge", "label": "Charge", "desc": "Append the payment to the ledger", "tool": "append_line", "file": "ledger.txt", "deps": ["intake"]}, {"id": "pack", "label": "Pack", "desc": "Write the packing slip", "tool": "write_file", "file": "pack.txt", "deps": ["intake"]}, {"id": "receipt", "label": "Receipt", "desc": "Write the receipt", "tool": "write_file", "file": "receipt.txt", "deps": ["charge"]}, {"id": "ship", "label": "Ship", "desc": "Print the shipping label", "tool": "write_file", "file": "shipping.txt", "deps": ["receipt", "pack"]}, {"id": "audit", "label": "Audit", "desc": "Write the audit record", "tool": "write_file", "file": "audit.txt", "deps": ["ship"]}], "beats": [{"kind": "run_started", "node": null, "tool": null, "say": "The run starts. The planner split order 1042 into six steps and recorded which steps wait on which."}, {"kind": "node_started", "node": "intake", "tool": null, "say": "Intake starts first, because nothing else has to happen before it."}, {"kind": "action_started", "node": "intake", "tool": "write_file", "say": "Before any tool runs, the journal writes down the action and the key that identifies it."}, {"kind": "action_completed", "node": "intake", "tool": "write_file", "say": "The order file is written, and the journal marks the action complete."}, {"kind": "node_succeeded", "node": "intake", "tool": null, "say": "Intake succeeded. Charge and Pack are both unblocked now."}, {"kind": "node_started", "node": "pack", "tool": null, "say": "Pack starts. It runs alongside Charge, because the two steps do not depend on each other."}, {"kind": "action_started", "node": "pack", "tool": "write_file", "say": "The journal records the Pack action before it runs."}, {"kind": "action_completed", "node": "pack", "tool": "write_file", "say": "The packing slip is written."}, {"kind": "node_succeeded", "node": "pack", "tool": null, "say": "Pack succeeded."}, {"kind": "node_started", "node": "charge", "tool": null, "say": "Charge starts. This is the step that appends the payment to the ledger."}, {"kind": "action_started", "node": "charge", "tool": "append_line", "say": "The journal records the payment append, the tool runs, and the money moves."}, {"kind": "crash", "node": "charge", "tool": null, "say": "The process crashes right here. The payment already landed in the ledger, but the journal never heard the outcome. This is the exact moment where a careless system would charge the customer a second time.", "long": true}, {"kind": "resume_intro", "node": null, "tool": null, "say": "Argon starts again and reads the journal first. One action is stuck at started, so before doing anything else, Argon checks whether that action already landed.", "long": true}, {"kind": "run_resumed", "node": null, "tool": null, "say": "Argon restarts the run from the plan stored in the journal and goes straight to the stuck action."}, {"kind": "node_started", "node": "charge", "tool": null, "say": "Charge is revisited, but it is not rerun blindly."}, {"kind": "action_reconciled", "node": "charge", "tool": "append_line", "say": "The ledger already holds the line paid 50, so Argon reconciles the action from that evidence and marks it complete. The payment ran exactly once."}, {"kind": "node_succeeded", "node": "charge", "tool": null, "say": "Charge is settled, and Receipt unblocks."}, {"kind": "node_started", "node": "receipt", "tool": null, "say": "Receipt starts."}, {"kind": "action_started", "node": "receipt", "tool": "write_file", "say": "The journal records the Receipt action."}, {"kind": "action_completed", "node": "receipt", "tool": "write_file", "say": "The receipt is written."}, {"kind": "node_succeeded", "node": "receipt", "tool": null, "say": "Receipt succeeded, and Ship unblocks."}, {"kind": "node_started", "node": "ship", "tool": null, "say": "Ship starts, with both the receipt and the packing slip ready."}, {"kind": "action_started", "node": "ship", "tool": "write_file", "say": "The journal records the Ship action."}, {"kind": "action_completed", "node": "ship", "tool": "write_file", "say": "The shipping label is printed."}, {"kind": "node_succeeded", "node": "ship", "tool": null, "say": "Ship succeeded."}, {"kind": "node_started", "node": "audit", "tool": null, "say": "Audit starts, the last step in the graph."}, {"kind": "action_started", "node": "audit", "tool": "write_file", "say": "The journal records the Audit action."}, {"kind": "action_completed", "node": "audit", "tool": "write_file", "say": "The audit record is written."}, {"kind": "node_succeeded", "node": "audit", "tool": null, "say": "Audit succeeded."}, {"kind": "run_finished", "node": null, "tool": null, "say": "Every step is done. An independent verifier now checks the files against the acceptance rules before the run counts as succeeded."}], "checks": [{"rule": "ledger.txt holds exactly 1 line", "evidence": "expected 1, found 1"}, {"rule": "receipt.txt contains paid 50", "evidence": "found, 31 bytes, hash recorded"}, {"rule": "shipping.txt exists", "evidence": "found, 28 bytes, hash recorded"}, {"rule": "audit.txt contains the word complete", "evidence": "found, 19 bytes, hash recorded"}], "ledger_lines": ["paid 50"]};
+const svg = document.getElementById("graph");
+const NS = "http://www.w3.org/2000/svg";
+const W = 150, H = 58;
+const layers = {};
+DATA.nodes.forEach(n => {
+  const depth = n.deps.length === 0 ? 0 :
+    Math.max(...n.deps.map(d => DATA.nodes.find(x => x.id === d)._depth)) + 1;
+  n._depth = depth;
+  (layers[depth] = layers[depth] || []).push(n);
+});
+Object.values(layers).forEach(group => {
+  group.forEach((n, i) => {
+    n._x = 36 + n._depth * 176;
+    n._y = 150 - H / 2 + (i - (group.length - 1) / 2) * 96;
+  });
+});
+function el(name, attrs) {
+  const e = document.createElementNS(NS, name);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  return e;
+}
+const defs = el("defs", {});
+defs.innerHTML = '<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5b93f5"/></marker>';
+svg.appendChild(defs);
+DATA.nodes.forEach(n => {
+  n.deps.forEach(d => {
+    const a = DATA.nodes.find(x => x.id === d);
+    const p = el("path", {
+      d: `M ${a._x + W} ${a._y + H / 2} C ${a._x + W + 44} ${a._y + H / 2}, ${n._x - 44} ${n._y + H / 2}, ${n._x} ${n._y + H / 2}`,
+      stroke: "#33507e", fill: "none", "stroke-width": 2, "marker-end": "url(#arr)"
+    });
+    svg.appendChild(p);
+  });
+});
+const nodeEls = {};
+DATA.nodes.forEach(n => {
+  const g = el("g", {});
+  const rect = el("rect", {x: n._x, y: n._y, width: W, height: H, rx: 11,
+    fill: "#0d1728", stroke: "#22334f", "stroke-width": 1.6});
+  const t1 = el("text", {x: n._x + 14, y: n._y + 24, fill: "#e8eefb",
+    "font-size": 15.5, "font-weight": 700});
+  t1.textContent = n.label;
+  const t2 = el("text", {x: n._x + 14, y: n._y + 43, fill: "#9db1d1", "font-size": 11.5});
+  t2.textContent = n.tool + " · " + n.file;
+  const dot = el("circle", {cx: n._x + W - 15, cy: n._y + 15, r: 5.5, fill: "#5a6f92"});
+  g.appendChild(rect); g.appendChild(t1); g.appendChild(t2); g.appendChild(dot);
+  svg.appendChild(g);
+  nodeEls[n.id] = {rect, dot};
+});
+const COLORS = {pending: "#5a6f92", running: "#5b93f5", succeeded: "#3ecf6f",
+  crashed: "#f2606e", reconciled: "#a78bfa"};
+function setNode(id, state) {
+  if (!id || !nodeEls[id]) return;
+  nodeEls[id].rect.setAttribute("stroke", COLORS[state]);
+  nodeEls[id].rect.setAttribute("stroke-width", state === "pending" ? 1.6 : 2.6);
+  nodeEls[id].dot.setAttribute("fill", COLORS[state]);
+}
+const narr = document.getElementById("narr");
+const timeline = document.getElementById("timeline");
+const journalBody = document.getElementById("journalBody");
+const pill = document.getElementById("runPill");
+const verdict = document.getElementById("verdict");
+const playBtn = document.getElementById("playBtn");
+const labelOf = id => (DATA.nodes.find(n => n.id === id) || {}).label || id;
+let rows = {}, timer = null, idx = 0, playing = false;
+
+function journalRow(beat, status) {
+  const n = DATA.nodes.find(x => x.id === beat.node);
+  if (!rows[beat.node]) {
+    if (journalBody.querySelector("td[colspan]")) journalBody.innerHTML = "";
+    const tr = document.createElement("tr");
+    tr.innerHTML = "<td>" + n.label + "</td><td>" + n.tool + "</td><td>" + n.file +
+      '</td><td><span class="st ' + status + '">' + status + "</span></td>";
+    journalBody.appendChild(tr);
+    rows[beat.node] = tr;
+  } else {
+    const tr = rows[beat.node];
+    tr.classList.remove("stuck");
+    tr.cells[3].innerHTML = '<span class="st ' + status + '">' + status + "</span>";
+  }
+}
+function applyBeat(b) {
+  narr.textContent = b.say;
+  narr.className = "narr" + (b.kind === "crash" ? " crash" :
+    (b.kind === "action_reconciled" || b.kind === "run_finished") ? " good" : "");
+  const li = document.createElement("li");
+  li.textContent = b.say;
+  timeline.querySelectorAll("li").forEach(x => x.classList.remove("hot"));
+  li.classList.add("hot");
+  timeline.appendChild(li);
+  timeline.scrollTop = timeline.scrollHeight;
+  if (b.kind === "node_started") setNode(b.node, "running");
+  if (b.kind === "action_started") journalRow(b, "started");
+  if (b.kind === "action_completed") journalRow(b, "completed");
+  if (b.kind === "action_reconciled") { journalRow(b, "reconciled"); setNode(b.node, "reconciled"); }
+  if (b.kind === "node_succeeded") setNode(b.node, "succeeded");
+  if (b.kind === "crash") {
+    setNode(b.node, "crashed");
+    if (rows[b.node]) rows[b.node].classList.add("stuck");
+    pill.textContent = "Run state: crashed mid payment";
+    pill.className = "pill crash";
+  }
+  if (b.kind === "run_resumed") { pill.textContent = "Run state: resumed from the journal"; pill.className = "pill run"; }
+  if (b.kind === "run_started") { pill.textContent = "Run state: running"; pill.className = "pill run"; }
+  if (b.kind === "run_finished") {
+    pill.textContent = "Run state: succeeded and verified";
+    pill.className = "pill ok";
+    showVerdict();
+  }
+}
+function showVerdict() {
+  const box = document.getElementById("checks");
+  box.innerHTML = "";
+  DATA.checks.forEach(c => {
+    const d = document.createElement("div");
+    d.className = "check";
+    d.innerHTML = '<span class="pass">PASS</span><span>' + c.rule +
+      '</span><span class="ev">' + c.evidence + "</span>";
+    box.appendChild(d);
+  });
+  document.getElementById("ledgerLines").textContent = DATA.ledger_lines.join("\n");
+  verdict.style.display = "block";
+}
+function step() {
+  if (idx >= DATA.beats.length) { pause(); playBtn.textContent = "Play again"; idx = 0; return; }
+  const b = DATA.beats[idx++];
+  applyBeat(b);
+  timer = setTimeout(step, b.long ? 2100 : 640);
+}
+function play() {
+  if (playing) return;
+  if (idx >= DATA.beats.length) reset();
+  playing = true;
+  playBtn.textContent = "Pause";
+  step();
+}
+function pause() { playing = false; playBtn.textContent = "Play the run"; clearTimeout(timer); }
+function reset() {
+  pause(); idx = 0; rows = {};
+  timeline.innerHTML = "";
+  journalBody.innerHTML = '<tr><td colspan="4" style="color:var(--dim)">Nothing yet. The journal fills in as actions run.</td></tr>';
+  verdict.style.display = "none";
+  DATA.nodes.forEach(n => setNode(n.id, "pending"));
+  pill.textContent = "Run state: ready"; pill.className = "pill";
+  narr.className = "narr";
+  narr.textContent = "Press play. Six steps, one injected crash, and a payment that must land exactly once.";
+  playBtn.textContent = "Play the run";
+}
+playBtn.addEventListener("click", () => playing ? pause() : play());
+document.getElementById("restartBtn").addEventListener("click", () => { reset(); play(); });
+setTimeout(() => { if (!playing && idx === 0) play(); }, 900);
+</script>
+</body>
+</html>
